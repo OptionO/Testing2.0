@@ -71767,9 +71767,10 @@ function addScript$$module$content$working$106501573$scripts$project$main(
   }
 }
 addScript$$module$content$working$106501573$scripts$project$main(
-  "https://game-cdn.poki.com/scripts/v2/poki-sdk.js",
+  "scripts/v2/poki-sdk.js",
   "poki-sdk",
   () => {
+    console.error("INITIALIZED BABY")
     PokiSDK.init()
       .then(() => {
         console.log("Poki SDK successfully initialized");

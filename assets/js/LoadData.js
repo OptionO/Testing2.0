@@ -1,7 +1,7 @@
-window.dataLayer = window.dataLayer || [];
-function gtag() { dataLayer.push(arguments); }
-gtag('js', new Date());
-gtag('config', 'G-KW15Q1QG97');
+// window.dataLayer = window.dataLayer || [];
+// function gtag() { dataLayer.push(arguments); }
+// gtag('js', new Date());
+// gtag('config', 'G-KW15Q1QG97');
 var can_redirect = false;
 
 function LoadData() {
@@ -11,17 +11,36 @@ function LoadData() {
     if (TitleData === null) {
         document.title = "JustStudy";
         document.querySelector("link[rel='shortcut icon']").href = '/assets/img/favicon.ico';
+        window.parent.postMessage({
+            type: "update-meta",
+            title: "JustStudy",
+            favicon: "/assets/img/favicon.ico"
+        })
     }
     else {
         document.title = TitleData;
         document.querySelector("link[rel='shortcut icon']").href = "/" + FaviData;
+        window.parent.postMessage({
+            type: "update-meta",
+            title: TitleData,
+            favicon: FaviData
+        })
+
     }
 
 };
 
-let key_input_data = "";
+let wpwwrxls_key_input_data = "";
+
+const urls = {
+    "Seneca - Learn 2x Faster": "https://senecalearning.com/",
+    "Sparx Maths - Home": "https://www.sparxmaths.com",
+    "Tassomai": "https://www.tassomai.com",
+    "MathsWatch": "https://www.mathswatch.com",
+};
+
 document.addEventListener('keydown', function (event) {
-    key_input_data = "";
+    wpwwrxls_key_input_data = "";
     const keys = new Set();
 
     if (event.ctrlKey) keys.add('Ctrl');
@@ -29,44 +48,29 @@ document.addEventListener('keydown', function (event) {
     if (event.shiftKey) keys.add('Shift');
     if (event.metaKey) keys.add('Meta');
     keys.add(event.key);
-    key_input_data = Array.from(keys).join('+');
+    wpwwrxls_key_input_data = Array.from(keys).join('+');
 
-    const urls = [
-        "https://senecalearning.com/",
-        "https://www.sparxmaths.com",
-        "https://www.tassomai.com"
-    ];
-
-    if (key_input_data == localStorage.getItem("panickey")) {
-        if (localStorage.getItem("Title") == "Seneca - Learn 2x Faster") {
-            window.location.href = urls[0];
-        } else if (localStorage.getItem("Title") == "Sparx Maths - Home") {
-            window.location.href = urls[1];
-        } else if (localStorage.getItem("Title") == "Tassomai") {
-            window.location.href = urls[2];
-        } else if (localStorage.getItem("Title") == "JustStudy") {
-            window.location.href = urls[Math.floor(Math.random() * 3)];
+    if (wpwwrxls_key_input_data === localStorage.getItem("panickey")) {
+        const currentTitle = localStorage.getItem("Title");
+        if (urls[currentTitle]) {
+            window.location.href = urls[currentTitle];
+        } else if (currentTitle === "JustStudy") {
+            const obj_urls = Object.values(urls);
+            window.location.href = obj_urls[Math.floor(Math.random() * obj_urls.length)];
         }
     }
 
+
 });
 window.addEventListener("blur", () => {
-    if (key_input_data == "Alt" && localStorage.getItem("redirect") === 'true') {
-        const urls = [
-            "https://senecalearning.com/",
-            "https://www.sparxmaths.com",
-            "https://www.tassomai.com"
-        ];
-        if (localStorage.getItem("Title") == "Seneca - Learn 2x Faster") {
-            console.log("redirecting")
-            window.location.href = urls[0];
-        } else if (localStorage.getItem("Title") == "Sparx Maths - Home") {
-            window.location.href = urls[1];
-        } else if (localStorage.getItem("Title") == "Tassomai") {
-            window.location.href = urls[2];
-        } else if (localStorage.getItem("Title") == "JustStudy") {
-            console.log("redirecting")
-            window.location.href = urls[Math.floor(Math.random() * 3)];
+    if (wpwwrxls_key_input_data == "Alt" && localStorage.getItem("redirect") === 'true') {
+        const currentTitle = localStorage.getItem("Title");
+
+        if (urls[currentTitle]) {
+            window.location.href = urls[currentTitle];
+        } else if (currentTitle === "JustStudy") {
+            const obj_urls = Object.values(urls);
+            window.location.href = obj_urls[Math.floor(Math.random() * obj_urls.length)];
         }
     }
 })
@@ -89,115 +93,73 @@ function MakeThing() {
     };
     document.head.appendChild(script);
 }
+//document.addEventListener("DOMContentLoaded", MakeThing)
+MakeThing()
 
-LoadData();
-function MakeThing() {
-    const style = document.createElement('style');
-    style.innerHTML = `
-    body{
-        overflow: hidden;
-    }
-    `;
-    document.body.appendChild(style);
-    const script = document.createElement("script");
-    script.src = "/assets/js/teacher.js";
-    script.onerror = function () {
-        console.error("Failed to load the script:", script.src);
-    };
-    document.head.appendChild(script);
+if (window.__scriptInjected) {
+    window.dispatchEvent(new Event("load"));
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    MakeThing();
-});
+
+(function () {
+    let sessionId = sessionStorage.getItem('sessionId');
+    if (!sessionId) {
+        sessionId = 'sess-' + Math.random().toString(36).substr(2, 9);
+        sessionStorage.setItem('sessionId', sessionId);
+    }
+
+    function sendHeartbeat() {
+        const payload = {
+            sessionId: sessionId,
+            url: window.location.href,
+            userAgent: navigator.userAgent
+        };
+
+        fetch('/api/activeuser', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Heartbeat sent:', data);
+            })
+            .catch(err => {
+                console.error('Error sending heartbeat:', err);
+            });
+    }
+
+    sendHeartbeat();
+
+    setInterval(sendHeartbeat, 60000);
+})();
 
 
-// Very secret things
+(function initializeGtag() {
+    var gtagScript = document.createElement('script');
+    gtagScript.async = true;
+    gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=G-3EEQ5QQ176';
+    document.head.appendChild(gtagScript);
 
-// (function () {
-//     const STATUS_PAGE_URL = `${window.location.protocol}//${window.location.host}`;
-//     const STATUS_API = `${STATUS_PAGE_URL}/status`;
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+    window.gtag = gtag;
 
-//     document.addEventListener("DOMContentLoaded", function() {
-//         var banner = document.createElement('div');
-//         banner.style.position = 'fixed';
-//         banner.style.top = '0';
-//         banner.style.left = '0';
-//         banner.style.width = '100vw';
-//         banner.style.background = '#ffa500';
-//         banner.style.color = '#000';
-//         banner.style.padding = '1vh 2vw';
-//         banner.style.textAlign = 'center';
-//         banner.style.fontSize = '2vh';
-//         banner.style.fontFamily = 'Arial, sans-serif';
-//         banner.style.display = 'none';
-//         banner.style.zIndex = '10000';
-//         banner.style.overflow = 'hidden';
-//         banner.style.display = 'flex';
-//         banner.style.alignItems = 'center';
-//         banner.style.justifyContent = 'space-between';
+    gtag('js', new Date());
+    let urls = ["G-3EEQ5QQ176", "G-KW15Q1QG97", "G-3R6G7D57Z2", "G-YNTJ82RFRH"];
+    urls.forEach(id => {
+        gtag('config', id);
+    });
 
-//         var bannerTextWrapper = document.createElement('div');
-//         bannerTextWrapper.style.flex = '1';
-//         bannerTextWrapper.style.overflow = 'hidden';
-        
-//         var bannerText = document.createElement('span');
-//         bannerText.style.overflow = 'hidden';
-//         bannerText.style.whiteSpace = 'nowrap';
-//         bannerText.style.textOverflow = 'ellipsis';
-//         bannerText.style.display = 'inline-block';
-//         bannerText.style.maxWidth = '65vw';
-//         bannerTextWrapper.appendChild(bannerText);
-//         banner.appendChild(bannerTextWrapper);
+    console.info('[Analytics] gtag.js initialized with multiple IDs');
+})();
 
-//         var controlsWrapper = document.createElement('div');
-//         controlsWrapper.style.display = 'flex';
-//         controlsWrapper.style.alignItems = 'center';
 
-//         var viewDetails = document.createElement('a');
-//         viewDetails.innerText = ' View Details';
-//         viewDetails.href = 'https://status.juststudying.uk';
-//         viewDetails.target = '_blank';
-//         viewDetails.style.marginLeft = '1vw';
-//         viewDetails.style.color = '#000';
-//         viewDetails.style.textDecoration = 'underline';
-//         controlsWrapper.appendChild(viewDetails);
-
-//         var bannerClose = document.createElement('span');
-//         bannerClose.innerText = ' ✖';
-//         bannerClose.style.cursor = 'pointer';
-//         bannerClose.style.marginLeft = '1vw';
-//         bannerClose.style.fontWeight = 'bold';
-//         bannerClose.style.padding = '0 1vw';
-//         bannerClose.onclick = function() {
-//             banner.style.display = 'none';
-//         };
-//         controlsWrapper.appendChild(bannerClose);
-
-//         banner.appendChild(controlsWrapper);
-//         document.body.appendChild(banner);
-
-//         function fetchStatus() {
-//             fetch(STATUS_API)
-//                 .then(response => response.json())
-//                 .then(data => {
-//                     if (data.incident && data.incident.title) {
-//                         let message = `${data.incident.title}: ${data.incident.content}`;
-//                         bannerText.innerText = message;
-//                         bannerText.title = message;
-//                         banner.style.display = 'flex';
-//                     } else {
-//                         banner.style.display = 'none';
-//                     }
-//                 })
-//                 .catch(err => {
-//                     console.error('Error fetching Uptime Kuma status:', err);
-//                     bannerText.innerText = 'Error fetching status';
-//                 });
-//         }
-        
-//         fetchStatus();
-//         setInterval(fetchStatus, 60000);
-//     });
-// })(); 
-
+//document.addEventListener('DOMContentLoaded', initializeGtag);
+//if (window.__scriptInjected){
+//  window.dispatchEvent(new Event('DOMContentLoaded'));
+//};

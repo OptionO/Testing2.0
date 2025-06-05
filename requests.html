@@ -98,45 +98,68 @@
         const gamereqGroup = document.getElementById('gamereqGroup');
         const takedownGroup = document.getElementById('takedownGroup');
 
+        // Show/hide groups on type change
         requestTypeEl.addEventListener('change', function () {
-            fixGroup.classList.add('hidden');
-            gamereqGroup.classList.add('hidden');
-            takedownGroup.classList.add('hidden');
-
-            if (this.value === 'fix') {
-                fixGroup.classList.remove('hidden');
-            } else if (this.value === 'gamereq') {
-                gamereqGroup.classList.remove('hidden');
-            } else if (this.value === 'takedown') {
-                takedownGroup.classList.remove('hidden');
-            }
+            [fixGroup, gamereqGroup, takedownGroup].forEach(g => g.classList.add('hidden'));
+            if (this.value === 'fix') fixGroup.classList.remove('hidden');
+            else if (this.value === 'gamereq') gamereqGroup.classList.remove('hidden');
+            else if (this.value === 'takedown') takedownGroup.classList.remove('hidden');
         });
 
-        document.getElementById('requestForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            const requestType = requestTypeEl.value;
-            const data = { data: { type: requestType } };
+        document.getElementById('requestForm').addEventListener('submit', async function (e) {
+            e.preventDefault(); // stop native submit
 
-            if (requestType === 'fix') {
-                data.data.site = document.getElementById('siteField').value;
-            } else if (requestType === 'gamereq') {
-                data.data.game = document.getElementById('gameField').value;
-            } else if (requestType === 'takedown') {
-                data.data.takedown = document.getElementById('takedownField').value;
+            // 1️⃣ Validate selection
+            const type = requestTypeEl.value.trim();
+            if (!type) {
+                alert('🚨 Please select a Request Type!');
+                requestTypeEl.focus();
+                return;
             }
 
-            console.log('Form submission data:', data);
-            fetch('https://api.willgray.uk/api/juststudy', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            alert('Success! Someone will have a look shortly. Thank you.\n Redirecting back home...');
-            window.history.back();
+            // 2️⃣ Determine which field to check
+            let fieldEl, fieldLabel;
+            if (type === 'fix') {
+                fieldEl = document.getElementById('siteField');
+                fieldLabel = 'Site';
+            } else if (type === 'gamereq') {
+                fieldEl = document.getElementById('gameField');
+                fieldLabel = 'Game';
+            } else { // takedown
+                fieldEl = document.getElementById('takedownField');
+                fieldLabel = 'Takedown';
+            }
+
+            // 3️⃣ Trim & validate that one visible input
+            const value = fieldEl.value.trim();
+            if (!value) {
+                alert(`🚨 Please provide the ${fieldLabel}!`);
+                fieldEl.focus();
+                return;
+            }
+
+            // 4️⃣ Build payload
+            const data = { data: { type } };
+            data.data[fieldLabel.toLowerCase()] = value;
+
+            // 5️⃣ Dispatch
+            try {
+                const hostname = window.location.hostname;
+                const apiUrl = `https://api.${hostname}/api/juststudy`;
+                await fetch(apiUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                });
+                alert('✅ Success! Someone will have a look shortly. Redirecting back home…');
+                window.history.back();
+            } catch (err) {
+                console.error('Submission failed:', err);
+                alert('⚠️ Oops, something went sideways. Please try again in a moment.');
+            }
         });
     </script>
+
 </body>
 
 </html>

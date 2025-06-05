@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@1" />
+    <title>ZenoHost | Revolutionising Cheap and Efficient hosting!</title>
+    <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <meta name="description" content="ZenoHost | Revolutionising Cheap and Efficient hosting!">
+    <script src="https://cdn.jsdelivr.net/npm/smooth-scroll@16.1.3/dist/smooth-scroll.polyfills.min.js"></script>
+    <script src="https://kit.fontawesome.com/aa8342dda4.js" crossorigin="anonymous"></script>
+</head>
+</head>
+
+<body class="pt-[8vw]" bg>
+    <nav class="fixed top-[2vw] right-[2vw] flex items-center justify-between gap-[1vw] z-[50]
+    bg-gradient-to-r from-[#7CF03D] via-[#3ecf5f] to-[var(--bg-secondary-color)]
+    p-[1vw] rounded-[1vw] shadow-md w-[96vw]">
+        <!-- Left side links -->
+        <div class="flex items-center gap-[1vw]">
+            <a href="#home"
+                class="text-[1.8vw] font-medium text-white drop-shadow hover:underline transition-all transform hover:scale-105 cursor-pointer">
+                Home
+            </a>
+            <a href="#pricing"
+                class="text-[1.8vw] font-medium text-white drop-shadow hover:underline transition-all transform hover:scale-105 cursor-pointer">
+                Pricing
+            </a>
+        </div>
+
+        <!-- Right side items -->
+        <div class="flex items-center gap-[1vw]">
+            <a
+                class="text-[1.8vw] font-medium text-white drop-shadow hover:underline transition-all transform hover:scale-105 cursor-pointer">
+                Contact Us
+            </a>
+            <button id="themeToggle"
+                class="flex items-center justify-center bg-[#7CF03D] text-[var(--bg-color)]
+        px-[1vw] py-[1vw] text-[1.2vw] rounded-[2vw] font-semibold cursor-pointer transition duration-300 transform hover:scale-105">
+                <span id="themeIcon" class="material-symbols-outlined text-[1.5vw]">light_mode</span>
+            </button>
+            <!-- Menu Button and Dropdown -->
+            <div class="relative flex items-center">
+                <button type="button"
+                    class="flex items-center justify-center bg-[#7CF03D] text-[var(--bg-color)]
+          px-[2vw] py-[1vw] text-[1.2vw] rounded-[2vw] font-semibold cursor-pointer transition duration-300 transform hover:scale-105 relative"
+                    id="menu-button" aria-expanded="true" aria-haspopup="true">
+                    <div class="relative">
+                        <div id="defaultState" class="flex items-center transition-opacity duration-300 opacity-100">
+                            <span>Login</span>
+                            <svg id="arrowIcon" class="size-[1.2vw] ml-[0.5vw] text-[var(--bg-color)]"
+                                viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd"
+                                    d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+                                    clip-rule="evenodd" />
+                            </svg>
+                        </div>
+                        <div id="closeState"
+                            class="absolute inset-0 flex items-center justify-center transition-opacity duration-300 opacity-0">
+                            <span>X</span>
+                        </div>
+                    </div>
+                </button>
+
+                <div class="absolute top-full right-0 z-10 w-[10vw] origin-top-right rounded-md
+           bg-[var(--bg-secondary-color)]
+           ring-2 ring-[var(--menu-color)]/40 shadow-lg hidden" role="menu" aria-orientation="vertical"
+                    aria-labelledby="menu-button" tabindex="-1">
+                    <div class="py-[1vw]" role="none">
+                        <a href="#"
+                            class="block px-[2vw] py-[1vw] text-sm text-[var(--menu-color)] hover:bg-[var(--hover-color)] transition"
+                            role="menuitem">Pterodactyl</a>
+                        <a href="#"
+                            class="block px-[2vw] py-[1vw] text-sm text-[var(--menu-color)] hover:bg-[var(--hover-color)] transition"
+                            role="menuitem">HestiaCP</a>
+                        <a href="#"
+                            class="block px-[2vw] py-[1vw] text-sm text-[var(--menu-color)] hover:bg-[var(--hover-color)] transition"
+                            role="menuitem">Azuracast</a>
+                        <a href="#"
+                            class="block px-[2vw] py-[1vw] text-sm text-[var(--menu-color)] hover:bg-[var(--hover-color)] transition"
+                            role="menuitem">Store</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <div class="flex flex-col items-center justify-center h-[100vh]" id="home">
+        <h1 class="text-[5vw] font-bold font-[Inter] text-[var(--title)]">ZenoHost</h1>
+        <h2 class="text-[2.5vw] font-semibold text-[var(--title)] font-[Inter]">Revolutionising Cheap and Efficient
+            hosting!</h2>
+        <a href="#pricing"
+            class="mt-[2vw] px-[3vw] py-[1vw] bg-[#7CF03D] text-[var(--bg-color)] rounded-[2vw] text-[1.2vw] font-semibold hover:opacity-90 transition">See
+            Plans</a>
+    </div>
+    <center>
+        <h2 class="text-[2.5vw] font-semibold text-[var(--title)] font-[Inter] center" id="why">Why ZenoHost?</h2>
+    </center>
+    <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[2vw] mt-[5vw]">
+        <div class="relative p-[2vw] rounded-[1.5vw] bg-[var(--secondary-bg-color)] text-[var(--text-color)] 
+                 shadow-md transition-transform duration-300 hover:shadow-2xl hover:scale-[1.03]">
+            <span class="material-symbols-outlined text-[2vw] mb-[1vw] block">Security</span>
+            <h3 class="text-[1.5vw] font-semibold mb-[0.5vw]">Secure by Design</h3>
+            <p class="text-[1vw] leading-[1.6]">
+                End-to-end encryption, DDoS protection, and auto backups built in.
+            </p>
+        </div>
+
+        <div class="relative p-[2vw] rounded-[1.5vw] bg-[var(--secondary-bg-color)] text-[var(--text-color)] 
+                 shadow-md transition-transform duration-300 hover:shadow-2xl hover:scale-[1.03]">
+            <span class="material-symbols-outlined text-[2vw] mb-[1vw] block">Cloud</span>
+            <h3 class="text-[1.5vw] font-semibold mb-[0.5vw]">Scalable Cloud</h3>
+            <p class="text-[1vw] leading-[1.6]">
+                Easily scale your servers as you grow with no downtime.
+            </p>
+        </div>
+
+        <div class="relative p-[2vw] rounded-[1.5vw] bg-[var(--secondary-bg-color)] text-[var(--text-color)] 
+                 shadow-md transition-transform duration-300 hover:shadow-2xl hover:scale-[1.03]">
+            <span class="material-symbols-outlined text-[2vw] mb-[1vw] block">Bolt</span>
+            <h3 class="text-[1.5vw] font-semibold mb-[0.5vw]">Lightning Speed</h3>
+            <p class="text-[1vw] leading-[1.6]">
+                Blazing-fast load times and quick server deployments.
+            </p>
+        </div>
+    </section>
+
+
+    <div class="card-container">
+        <div class="card">
+            <h3>Web Hosting</h3>
+            <p>Experience unmatched speed and reliability with our web hosting solutions, designed to keep your site
+                online 24/7 with top-notch performance and security.</p>
+        </div>
+        <div class="card">
+            <h3>Database Hosting</h3>
+            <p>Secure and scalable database hosting that optimizes performance, protects your critical data, and ensures
+                high availability around the clock.</p>
+        </div>
+        <div class="card">
+            <h3>Email Hosting</h3>
+            <p>Professional email hosting with advanced spam protection and custom domain support, tailored to enhance
+                your business communications.</p>
+        </div>
+        <div class="card">
+            <h3>Game Hosting</h3>
+            <p>Dedicated game hosting with high-speed connectivity and minimal latency to deliver an immersive and
+                lag-free gaming experience.</p>
+        </div>
+        <div class="card">
+            <h3>Radio Hosting</h3>
+            <p>Stream your favorite broadcasts seamlessly with our robust radio hosting solutions, built for flawless
+                streaming and superior audio quality.</p>
+        </div>
+
+
+        <div class="stack-arrow arrow-left" id="arrowLeft">&#10094;</div>
+        <div class="stack-arrow arrow-right" id="arrowRight">&#10095;</div>
+    </div>
+
+
+    <section class="mt-[5vw] text-center">
+        <h2 class="text-[2.5vw] font-bold text-[var(--title)]">What our users say</h2>
+        <div class="mt-[3vw] flex flex-col md:flex-row gap-[2vw] justify-center">
+            <div
+                class="bg-[var(--secondary-bg-color)] text-[var(--text-color)] p-[2vw] rounded-[2vw] shadow-md max-w-[30vw]">
+                <p class="text-[1vw] italic">"ZenoHost made it super easy to launch my startup."</p>
+                <p class="mt-[1vw] font-semibold text-[1vw]">— Alex, Developer</p>
+            </div>
+            <div
+                class="bg-[var(--secondary-bg-color)] text-[var(--text-color)] p-[2vw] rounded-[2vw] shadow-md max-w-[30vw]">
+                <p class="text-[1vw] italic">"ZenoHost made sure that there was little to no downtime allowing our
+                    clients to access our site with ease!"</p>
+                <p class="mt-[1vw] font-semibold text-[1vw]">— JustStudy</p>
+            </div>
+            <div
+                class="bg-[var(--secondary-bg-color)] text-[var(--text-color)] p-[2vw] rounded-[2vw] shadow-md max-w-[30vw]">
+                <p class="text-[1vw] italic">“This service allows me to host and update my portfolio whenever with no
+                    disturbances and great customer service!”
+                </p>
+                <p class="mt-[1vw] font-semibold text-[1vw]">— Sam, Developer</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing" class="mt-[6vw]">
+        <h2 class="text-[2.5vw] font-bold text-center text-[var(--title)] mb-[3vw]">
+            Hosting Plans Matrix
+        </h2>
+        <div class="overflow-x-auto">
+            <table class="min-w-full border-collapse">
+                <thead>
+                    <tr class="bg-[var(--secondary-bg-color)] text-[var(--text-color)]">
+                        <th class="border border-gray-300 p-[1vw] text-center">Plan Size</th>
+                        <th class="border border-gray-300 p-[1vw] text-center">Web Hosting</th>
+                        <th class="border border-gray-300 p-[1vw] text-center">Database Hosting</th>
+                        <th class="border border-gray-300 p-[1vw] text-center">Mail Hosting</th>
+                        <th class="border border-gray-300 p-[1vw] text-center">
+                            Game Hosting
+                            <br />
+                            <select id="gameSelect" class="mt-[0.5vw] px-[1vw] py-[0.5vw] text-[1vw]
+                         border border-gray-50 text-center
+                         text-[var(--text-color)] bg-[var(--secondary-bg-color)]">
+                                <option value="default" default>Select a game...</option>
+                                <option value="minecraft">Minecraft</option>
+                                <option value="cs">Counter-Strike</option>
+                                <option value="terraria">Terraria</option>
+                                <option value="valheim">Valheim</option>
+                                <option value="rust">Rust</option>
+                                <!-- Add more games as needed -->
+                            </select>
+                        </th>
+
+                        <th class="border border-gray-300 p-[1vw] text-center">Radio Hosting</th>
+                        <th class="border border-gray-300 p-[1vw] text-center">Coding Language Server</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="bg-white text-[var(--text-color)]">
+                        <td class="border border-gray-300 p-[1vw] text-center">Small</td>
+                        <td class="border border-gray-300 p-[1vw]">
+                            £1.50p/m 3GB Storage, 5 Emails, 1 Database, Standard Support
+                        </td>
+                        <td class="border border-gray-300 p-[1vw] text-center">£5p/m - 1 Database</td>
+                        <td class="border border-gray-300 p-[1vw] text-center">£2p/m - 10 Emails</td>
+                        <td class="border border-gray-300 p-[1vw]" data-plan="Small">
+                            <span class="game-hosting-details">
+                                -----
+                            </span>
+                        </td>
+                        <td class="border border-gray-300 p-[1vw] text-center">£8p/m - 500 Listeners</td>
+                        <td class="border border-gray-300 p-[1vw]">
+                            £3.00p/m 1 CPU core, 2GB RAM, 10GB Storage, Supports 1 Language Runtime, Standard Support
+                        </td>
+                    </tr>
+                    <tr class="bg-[var(--secondary-bg-color)] text-[var(--text-color)]">
+                        <td class="border border-gray-300 p-[1vw] text-center">Medium Small</td>
+                        <td class="border border-gray-300 p-[1vw]">
+                            £2.50p/m 5GB Storage, 7 Emails, 2 Database, Standard Support
+                        </td>
+                        <td class="border border-gray-300 p-[1vw] text-center">£8.50p/m - 2 Databases</td>
+                        <td class="border border-gray-300 p-[1vw] text-center">£3.50p/m - 25 Emails</td>
+                        <td class="border border-gray-300 p-[1vw]" data-plan="Medium Small">
+                            <span class="game-hosting-details">
+                                -----
+                            </span>
+                        </td>
+                        <td class="border border-gray-300 p-[1vw] text-center">£12p/m - 1000 Listeners</td>
+                        <td class="border border-gray-300 p-[1vw]">
+                            £5.00p/m 2 CPU cores, 4GB RAM, 20GB Storage, Supports 2 Language Runtimes, Standard Support
+                        </td>
+                    </tr>
+                    <tr class="bg-white text-[var(--text-color)]">
+                        <td class="border border-gray-300 p-[1vw] text-center">Medium</td>
+                        <td class="border border-gray-300 p-[1vw]">
+                            £4.50p/m 10GB, 10 Emails, 1 Database, Standard Support
+                        </td>
+                        <td class="border border-gray-300 p-[1vw] text-center">£12p/m - 3 Databases</td>
+                        <td class="border border-gray-300 p-[1vw] text-center">£5p/m - 50 Emails</td>
+                        <td class="border border-gray-300 p-[1vw]" data-plan="Medium">
+                            <span class="game-hosting-details">
+                                -----
+                            </span>
+                        </td>
+                        <td class="border border-gray-300 p-[1vw] text-center">£16p/m - 2000 Listeners</td>
+                        <td class="border border-gray-300 p-[1vw]">
+                            £8.00p/m 2 CPU cores, 6GB RAM, 30GB Storage, Supports 3 Language Runtimes, Standard Support
+                        </td>
+                    </tr>
+                    <tr class="bg-[var(--secondary-bg-color)] text-[var(--text-color)]">
+                        <td class="border border-gray-300 p-[1vw] text-center">Medium Large</td>
+                        <td class="border border-gray-300 p-[1vw]">
+                            £6.80p/m 15GB, 15 Emails, 1 Database, Standard Support
+                        </td>
+                        <td class="border border-gray-300 p-[1vw] text-center">£18p/m - 5 Databases</td>
+                        <td class="border border-gray-300 p-[1vw] text-center">£7p/m - 75 Emails</td>
+                        <td class="border border-gray-300 p-[1vw]" data-plan="Medium Large">
+                            <span class="game-hosting-details">
+                                -----
+                            </span>
+                        </td>
+                        <td class="border border-gray-300 p-[1vw] text-center">£22p/m - 3000 Listeners</td>
+                        <td class="border border-gray-300 p-[1vw]">
+                            £12.00p/m 4 CPU cores, 8GB RAM, 50GB Storage, Supports 4 Language Runtimes, Pro Support
+                        </td>
+                    </tr>
+                    <tr class="bg-white text-[var(--text-color)]">
+                        <td class="border border-gray-300 p-[1vw] text-center">Large</td>
+                        <td class="border border-gray-300 p-[1vw]">
+                            £7.80p/m 20GB, 20 Emails, 3 Database, Pro Support
+                        </td>
+                        <td class="border border-gray-300 p-[1vw] text-center">£25p/m - 7 Databases</td>
+                        <td class="border border-gray-300 p-[1vw] text-center">£10p/m - 100 Emails</td>
+                        <td class="border border-gray-300 p-[1vw]" data-plan="Large">
+                            <span class="game-hosting-details">
+                                -----
+                            </span>
+                        </td>
+                        <td class="border border-gray-300 p-[1vw] text-center">£30p/m - 5000 Listeners</td>
+                        <td class="border border-gray-300 p-[1vw]">
+                            £18.00p/m 4 CPU cores, 12GB RAM, 70GB Storage, Supports 5 Language Runtimes, Pro Support
+                        </td>
+                    </tr>
+                    <tr class="bg-[var(--secondary-bg-color)] text-[var(--text-color)]">
+                        <td class="border border-gray-300 p-[1vw] text-center">Extra-Large</td>
+                        <td class="border border-gray-300 p-[1vw]">
+                            £12.50p/m 35GB, 30 Emails, 3 Database, Pro Support
+                        </td>
+                        <td class="border border-gray-300 p-[1vw] text-center">£35p/m - 10 Databases</td>
+                        <td class="border border-gray-300 p-[1vw] text-center">£15p/m - 150 Emails</td>
+                        <td class="border border-gray-300 p-[1vw]" data-plan="Extra-Large">
+                            <span class="game-hosting-details">
+                                -----
+                            </span>
+                        </td>
+                        <td class="border border-gray-300 p-[1vw] text-center">£40p/m - 10,000 Listeners</td>
+                        <td class="border border-gray-300 p-[1vw]">
+                            £25.00p/m 6 CPU cores, 16GB RAM, 100GB Storage, Supports 7 Language Runtimes, Pro Support
+                        </td>
+                    </tr>
+                    <tr class="bg-white text-[var(--text-color)]">
+                        <td class="border border-gray-300 p-[1vw] text-center">Further</td>
+                        <td class="border border-gray-300 p-[1vw] text-center" colspan="6">
+                            Contact Sales
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <script>
+        const gameHostingData = {
+            default: {
+                "Small": "-----",
+                "Medium Small": "-----",
+                "Medium": "-----",
+                "Medium Large": "-----",
+                "Large": "-----",
+                "Extra-Large": "-----",
+            },
+            minecraft: {
+                "Small": "£12.00p/m - 2 CPU cores, 4GB RAM, 60GB Storage, 1 Database, Supports up to 12 players, Standard Support",
+                "Medium Small": "£20.00p/m - 2 CPU cores, 6GB RAM, 80GB Storage, 1 Database, Supports up to 30 players, Standard Support",
+                "Medium": "£30.00p/m - 4 CPU cores, 8GB RAM, 120GB Storage, 2 Databases, Supports up to 60 players, Standard Support",
+                "Medium Large": "£40.00p/m - 4 CPU cores, 12GB RAM, 180GB Storage, 2 Databases, Supports up to 90 players, Pro Support",
+                "Large": "£60.00p/m - 6 CPU cores, 16GB RAM, 240GB Storage, 3 Databases, Supports up to 120 players, Pro Support",
+                "Extra-Large": "£85.00p/m - 8 CPU cores, 24GB RAM, 360GB Storage, 5 Databases, Supports up to 180 players, Pro Support"
+            },
+            cs: {
+                "Small": "£11.00p/m - 2 CPU cores, 4GB RAM, 55GB Storage, 1 Database, Supports up to 8 players, Standard Support",
+                "Medium Small": "£19.00p/m - 2 CPU cores, 6GB RAM, 70GB Storage, 1 Database, Supports up to 20 players, Standard Support",
+                "Medium": "£28.00p/m - 4 CPU cores, 8GB RAM, 110GB Storage, 2 Databases, Supports up to 40 players, Standard Support",
+                "Medium Large": "£38.00p/m - 4 CPU cores, 12GB RAM, 140GB Storage, 2 Databases, Supports up to 60 players, Pro Support",
+                "Large": "£55.00p/m - 6 CPU cores, 16GB RAM, 170GB Storage, 3 Databases, Supports up to 80 players, Pro Support",
+                "Extra-Large": "£75.00p/m - 8 CPU cores, 24GB RAM, 210GB Storage, 5 Databases, Supports up to 100 players, Pro Support"
+            },
+            terraria: {
+                "Small": "£9.00p/m - 1 CPU core, 2GB RAM, 40GB Storage, 1 Database, Supports up to 10 players, Standard Support",
+                "Medium Small": "£16.00p/m - 1 CPU core, 3GB RAM, 50GB Storage, 1 Database, Supports up to 20 players, Standard Support",
+                "Medium": "£23.00p/m - 2 CPU cores, 4GB RAM, 70GB Storage, 1 Database, Supports up to 30 players, Standard Support",
+                "Medium Large": "£31.00p/m - 2 CPU cores, 6GB RAM, 90GB Storage, 1 Database, Supports up to 40 players, Pro Support",
+                "Large": "£42.00p/m - 3 CPU cores, 8GB RAM, 120GB Storage, 2 Databases, Supports up to 50 players, Pro Support",
+                "Extra-Large": "£56.00p/m - 4 CPU cores, 10GB RAM, 150GB Storage, 2 Databases, Supports up to 70 players, Pro Support"
+            },
+            valheim: {
+                "Small": "£10.00p/m - 2 CPU cores, 4GB RAM, 50GB Storage, 1 Database, Supports up to 10 players, Standard Support",
+                "Medium Small": "£17.00p/m - 2 CPU cores, 6GB RAM, 70GB Storage, 1 Database, Supports up to 20 players, Standard Support",
+                "Medium": "£25.00p/m - 4 CPU cores, 8GB RAM, 100GB Storage, 2 Databases, Supports up to 35 players, Standard Support",
+                "Medium Large": "£33.00p/m - 4 CPU cores, 10GB RAM, 130GB Storage, 2 Databases, Supports up to 50 players, Pro Support",
+                "Large": "£48.00p/m - 6 CPU cores, 12GB RAM, 170GB Storage, 3 Databases, Supports up to 70 players, Pro Support",
+                "Extra-Large": "£65.00p/m - 8 CPU cores, 16GB RAM, 220GB Storage, 4 Databases, Supports up to 100 players, Pro Support"
+            },
+            rust: {
+                "Small": "£13.00p/m - 2 CPU cores, 4GB RAM, 60GB Storage, 1 Database, Supports up to 8 players, Standard Support",
+                "Medium Small": "£22.00p/m - 2 CPU cores, 6GB RAM, 80GB Storage, 1 Database, Supports up to 16 players, Standard Support",
+                "Medium": "£32.00p/m - 4 CPU cores, 8GB RAM, 110GB Storage, 2 Databases, Supports up to 24 players, Standard Support",
+                "Medium Large": "£42.00p/m - 4 CPU cores, 12GB RAM, 150GB Storage, 2 Databases, Supports up to 32 players, Pro Support",
+                "Large": "£60.00p/m - 6 CPU cores, 16GB RAM, 200GB Storage, 3 Databases, Supports up to 40 players, Pro Support",
+                "Extra-Large": "£80.00p/m - 8 CPU cores, 24GB RAM, 280GB Storage, 4 Databases, Supports up to 50 players, Pro Support"
+            }
+        };
+        const gameSelect = document.getElementById("gameSelect");
+        gameSelect.addEventListener("change", (event) => {
+            const selectedGame = event.target.value;
+            document.querySelectorAll('[data-plan]').forEach((cell) => {
+                const plan = cell.getAttribute("data-plan");
+                const details =
+                    gameHostingData[selectedGame] && gameHostingData[selectedGame][plan]
+                        ? gameHostingData[selectedGame][plan]
+                        : "N/A";
+                cell.querySelector(".game-hosting-details").textContent = details;
+            });
+        });
+    </script>
+
+
+    <!-- Our Team Section -->
+    <section id="our-team" class="py-[5vw] bg-[var(--bg-secondary-color)] w-[90vw] mx-auto">
+        <div class="container mx-auto px-[2vw]">
+            <h2 class="text-[3vw] font-bold text-center text-[var(--title)] mb-[3vw]">
+                Meet Our Team
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-[3vw]">
+                <!-- Team Member 1 -->
+                <div class="bg-[var(--secondary-bg-color)] text-[var(--text-color)] p-[2vw]
+                 rounded-[1vw] shadow-md hover:shadow-2xl transition duration-300
+                 flex flex-col h-auto">
+                    <h3 class="text-[2vw] font-semibold text-center mb-[0.5vw]">Sam Taylor</h3>
+                    <p class="text-[1.5vw] text-center mb-[1vw]">Chief Executive Officer</p>
+                    <p class="text-[1.2vw] text-center mb-[1vw]">
+                        Hi I’m Sam and I’m also the CEO of ZenoHost. I’ve got over 5 years of development experience,
+                        mainly focusing on frontend but I’m no stranger to backend either. I joined ZenoHost to help 
+                        bring the vision to life affordable, simple, and flexible hosting for everyone. Whether you're 
+                        spinning up a quick Minecraft server or need something longer-term, we’ve made it easy to choose 
+                        a plan that fits. At ZenoHost, we’re all about keeping things smooth, fast, and accessible.
+                    </p>
+                    <!-- Social Links (Text-Only) -->
+                    <div class="flex justify-center space-x-[1vw] mt-auto">
+                        <a href="#" class="text-[1.5vw] font-semibold hover:text-[var(--title)]">
+                            Discord
+                        </a>
+                        <a href="#" class="text-[1.5vw] font-semibold hover:text-[var(--title)]">
+                            Portfolio
+                        </a>
+                        <a href="#" class="text-[1.5vw] font-semibold hover:text-[var(--title)]">
+                            Placeholder
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Team Member 2 -->
+                <div class="bg-[var(--secondary-bg-color)] text-[var(--text-color)] p-[2vw]
+                 rounded-[1vw] shadow-md hover:shadow-2xl transition duration-300
+                 flex flex-col h-auto">
+                    <h3 class="text-[2vw] font-semibold text-center mb-[0.5vw]">Will Gray</h3>
+                    <p class="text-[1.5vw] text-center mb-[1vw]">Chief Executive Officer</p>
+                    <p class="text-[1.2vw] text-center mb-[1vw]">
+                        Hi I'm Will and I am the CEO of ZenoHost. I have over 5 years of developing experience working
+                        with a wide range of languages and frameworks. I have gone through so many different hosting
+                        providers and noticed a key flaw, They are all way to expensive! Thats why I envisioned
+                        ZenoHost, a cost effective and easy to use hosting provider. With cheap and effective hosting
+                        plans that are easy to use and manage. A lot of people play minecraft but only want it for that
+                        1-2 week minecraft phase, with ZenoHost our plans range from daily, weekly, monthly and to
+                        yearly.
+                    </p>
+                    <!-- Social Links (Text-Only) -->
+                    <div class="flex justify-center space-x-[1vw] mt-auto">
+                        <a href="https://willgray.uk/" class="text-[1.5vw] font-semibold hover:text-[var(--title)]">
+                            Portfolio
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Team Member 3 -->
+                <div class="bg-[var(--secondary-bg-color)] text-[var(--text-color)] p-[2vw]
+                 rounded-[1vw] shadow-md hover:shadow-2xl transition duration-300
+                 flex flex-col h-auto">
+                    <h3 class="text-[2vw] font-semibold text-center mb-[0.5vw]">Sam Jones</h3>
+                    <p class="text-[1.5vw] text-center mb-[1vw]">Chief of Staff</p>
+                    <p class="text-[1.2vw] text-center mb-[1vw]">
+                        Hi im Sam I am the Chief of Staff for ZenoHost. And I am here to help with any enquiries and
+                        making positive change at Zeno! I have worked with Will our lovely CEO for 4 years on various
+                        projects and I am excited to get this show on the road!
+                    </p>
+                    <!-- Social Links (Text-Only) -->
+                    <div class="flex justify-center space-x-[1vw] mt-auto">
+                        <a href="#" class="text-[1.5vw] font-semibold hover:text-[var(--title)]">
+                            Facebook
+                        </a>
+                        <a href="#" class="text-[1.5vw] font-semibold hover:text-[var(--title)]">
+                            Twitter
+                        </a>
+                        <a href="#" class="text-[1.5vw] font-semibold hover:text-[var(--title)]">
+                            LinkedIn
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="w-full bg-[var(--secondary-bg-color)] text-[var(--text-color)] py-[3vw] text-center mt-[6vw]">
+        <section id="faq" class="py-[3vw] bg-[var(--secondary-bg-color)] text-[var(--text-color)]">
+            <h2 class="text-center text-[2.5vw] font-bold mb-[1.5vw]">Frequently Asked Questions</h2>
+            <div class="max-w-[60vw] mx-auto space-y-[1vw]">
+                <!-- Accordion Item 1 -->
+                <div class="accordion-item border border-[var(--hover-color)] rounded-[0.5vw] overflow-hidden">
+                    <button
+                        class="accordion-header w-full flex justify-between items-center text-left text-[1.3vw] font-semibold p-[1vw] bg-[var(--bg-color)] cursor-pointer focus:outline-none">
+                        <span>What is ZenoHost?</span>
+                        <span
+                            class="material-symbols-outlined arrow transition-transform duration-300 text-[1.3vw]">expand_more</span>
+                    </button>
+                    <div class="accordion-content p-[0.8vw] text-[1.1vw] hidden bg-[var(--secondary-bg-color)]">
+                        <p>ZenoHost provides high-performance hosting solutions with unmatched speed and security.</p>
+                    </div>
+                </div>
+                <!-- Accordion Item 2 -->
+                <div class="accordion-item border border-[var(--hover-color)] rounded-[0.5vw] overflow-hidden">
+                    <button
+                        class="accordion-header w-full flex justify-between items-center text-left text-[1.3vw] font-semibold p-[1vw] bg-[var(--bg-color)] cursor-pointer focus:outline-none">
+                        <span>How do I sign up?</span>
+                        <span
+                            class="material-symbols-outlined arrow transition-transform duration-300 text-[1.3vw]">expand_more</span>
+                    </button>
+                    <div class="accordion-content p-[0.8vw] text-[1.1vw] hidden bg-[var(--secondary-bg-color)]">
+                        <p>You can sign up by clicking the 'Login' button at the top and then selecting "Sign Up".</p>
+                    </div>
+                </div>
+                <!-- Accordion Item 3 -->
+                <div class="accordion-item border border-[var(--hover-color)] rounded-[0.5vw] overflow-hidden">
+                    <button
+                        class="accordion-header w-full flex justify-between items-center text-left text-[1.3vw] font-semibold p-[1vw] bg-[var(--bg-color)] cursor-pointer focus:outline-none">
+                        <span>What hosting plans do you offer?</span>
+                        <span
+                            class="material-symbols-outlined arrow transition-transform duration-300 text-[1.3vw]">expand_more</span>
+                    </button>
+                    <div class="accordion-content p-[0.8vw] text-[1.1vw] hidden bg-[var(--secondary-bg-color)]">
+                        <p>We offer Web Hosting, Database Hosting, Mail Hosting, Game Hosting, and Radio Hosting
+                            solutions.</p>
+                    </div>
+                </div>
+                <!-- Accordion Item 4 -->
+                <div class="accordion-item border border-[var(--hover-color)] rounded-[0.5vw] overflow-hidden">
+                    <button
+                        class="accordion-header w-full flex justify-between items-center text-left text-[1.3vw] font-semibold p-[1vw] bg-[var(--bg-color)] cursor-pointer focus:outline-none">
+                        <span>Is customer support available?</span>
+                        <span
+                            class="material-symbols-outlined arrow transition-transform duration-300 text-[1.3vw]">expand_more</span>
+                    </button>
+                    <div class="accordion-content p-[0.8vw] text-[1.1vw] hidden bg-[var(--secondary-bg-color)]">
+                        <p>Yes, our customer support is available 24/7 to assist you with any queries.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <p class="text-[1vw]">© 2025 ZenoHost. All rights reserved.</p>
+    </footer>
+    <!-- SmoothScroll Initialization -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            new SmoothScroll('a[href*="#"]', {
+                speed: 600
+            });
+        });
+
+        // setInterval(() => {
+        //     window.location.reload();
+        // }, 5000);
+    </script>
+    <!--Start of Tawk.to Script-->
+    <script type="text/javascript">
+        var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+        (function () {
+            var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+            s1.async = true;
+            s1.src = 'https://embed.tawk.to/67ec2cb15c42171908f459dc/1inp8t5ra';
+            s1.charset = 'UTF-8';
+            s1.setAttribute('crossorigin', '*');
+            s0.parentNode.insertBefore(s1, s0);
+        })();
+    </script>
+    <!--End of Tawk.to Script-->
+</body>
+
+</html>

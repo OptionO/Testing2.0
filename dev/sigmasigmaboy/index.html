@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ZenoHost – Premium, Flexible Hosting Solutions</title>
+    <style>
+        :root {
+            --primary-bg: #121212;
+            --secondary-bg: #1e1e1e;
+            --accent-color: #f0a500;
+            --text-color: #e0e0e0;
+            --card-bg: #1a1a1a;
+            --card-border: #333;
+        }
+
+        /* Global Styles */
+        body {
+            margin: 0;
+            font-family: 'Helvetica', sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background: var(--secondary-bg);
+            padding: 1rem 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        header h1 {
+            font-size: 2rem;
+            margin: 0;
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+
+        nav ul li a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-size: 1rem;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: var(--accent-color);
+        }
+
+        .hero {
+            background: linear-gradient(135deg, #2c2c2c, #000);
+            height: 70vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .services {
+            padding: 2rem;
+            background: var(--primary-bg);
+        }
+
+        .services h2 {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        .services-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .service {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 0.5rem;
+            padding: 1rem;
+            flex: 1 1 280px;
+            max-width: 320px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+
+        .service:hover {
+            transform: translateY(-0.5rem);
+        }
+
+        .service h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--accent-color);
+        }
+
+        .service p {
+            font-size: 1rem;
+            margin: 0;
+        }
+
+        .cta {
+            text-align: center;
+            padding: 2rem;
+            background: var(--secondary-bg);
+        }
+
+        .cta a {
+            background: var(--accent-color);
+            color: var(--primary-bg);
+            padding: 0.8rem 1.5rem;
+            text-decoration: none;
+            font-size: 1.2rem;
+            border-radius: 0.5rem;
+            transition: background 0.3s;
+        }
+
+        .cta a:hover {
+            background: #d18c00;
+        }
+
+        footer {
+            background: var(--secondary-bg);
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            nav ul li a {
+                font-size: 0.9rem;
+            }
+
+            .hero h2 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .services h2 {
+                font-size: 1.8rem;
+            }
+
+            .service h3 {
+                font-size: 1.3rem;
+            }
+
+            .service p {
+                font-size: 0.9rem;
+            }
+
+            .cta a {
+                font-size: 1rem;
+            }
+
+            footer {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <h1>ZenoHost</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div>
+            <h2>Revolutionize Your Digital Presence</h2>
+            <p>
+                Discover premium, flexible, and developer-friendly hosting solutions built for modern businesses,
+                gamers, and creators.
+            </p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <h2>Our Hosting Services</h2>
+        <div class="services-list">
+            <div class="service">
+                <h3>Web Hosting</h3>
+                <p>
+                    Experience lightning-fast, secure, and scalable web hosting solutions designed to empower your
+                    online presence.
+                </p>
+            </div>
+            <div class="service">
+                <h3>Game Hosting</h3>
+                <p>
+                    Enjoy flexible, pay-as-you-go game servers that scale with your usage, ensuring smooth, lag-free
+                    gameplay.
+                </p>
+            </div>
+            <div class="service">
+                <h3>VSCode Environment Hosting</h3>
+                <p>
+                    Code, collaborate, and deploy with our cloud-based VSCode environments crafted for ultimate
+                    productivity.
+                </p>
+            </div>
+            <div class="service">
+                <h3>Database Hosting</h3>
+                <p>
+                    Secure and robust database solutions engineered to handle your most data-intensive applications.
+                </p>
+            </div>
+            <div class="service">
+                <h3>Azuracast Hosting</h3>
+                <p>
+                    Power your radio and streaming services with specialized Azuracast hosting, built for performance
+                    and reliability.
+                </p>
+            </div>
+            <div class="service">
+                <h3>Mail Hosting</h3>
+                <p>
+                    Benefit from professional and secure mail hosting services that keep your communications running
+                    smoothly.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about" style="background: var(--secondary-bg); padding: 2rem;">
+        <div style="max-width: 800px; margin: 0 auto; text-align: center;">
+            <h2 style="color: var(--accent-color); font-size: 2rem; margin-bottom: 1rem;">About ZenoHost</h2>
+            <p style="font-size: 1rem; margin-bottom: 1rem;">
+                At ZenoHost, we’re dedicated to revolutionizing the way businesses, developers, and gamers experience
+                hosting. Our mission is simple: provide premium, scalable, and cost-effective solutions that empower
+                your digital presence.
+            </p>
+            <p style="font-size: 1rem; margin-bottom: 1rem;">
+                Our offerings include lightning-fast web hosting, flexible pay-as-you-go game hosting, cloud-based
+                VSCode environments, robust database hosting, dedicated Azuracast streaming solutions, and secure mail
+                hosting. We design our services to adapt to your needs, ensuring you only pay for what you use.
+            </p>
+            <p style="font-size: 1rem;">
+                Driven by innovation and a commitment to excellence, ZenoHost is here to unlock the full potential of
+                your online ventures. Join us in redefining the future of hosting.
+            </p>
+        </div>
+    </section>
+
+
+    <!-- Call to Action -->
+    <section class="cta" id="contact">
+        <a href="mailto:contact@zenohost.com">Get Started Today</a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2025 ZenoHost. All rights reserved.
+    </footer>
+</body>
+
+</html>

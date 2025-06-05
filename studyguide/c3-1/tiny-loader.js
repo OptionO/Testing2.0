@@ -5567,23 +5567,8 @@
         Object.defineProperty(n, "__esModule", { value: !0 }),
           (n.isDevHost = void 0),
           (n.isDevHost = function () {
-            const e = /gamepix.com(.*)version=/.test(location.href);
-            return (
-              location.href.indexOf("/#!/dev/") >= 0 ||
-              location.href.indexOf(".cloudfront.net/repository/") >= 0 ||
-              location.href.indexOf("ngrok.io") >= 0 ||
-              (function () {
-                const e = window.location.href,
-                  t =
-                    /(?!0)(?!.*\.$)((1?\d?\d|25[0-5]|2[0-4]\d)(\.|$)){3}(?!0)((1?\d?\d|25[0-5]|2[0-4]\d)(.*))/g;
-                return (
-                  "about:blank" === e ||
-                  e.indexOf("localhost") >= 0 ||
-                  t.test(e)
-                );
-              })() ||
-              e
-            );
+            const e = /gamepix.com(.*)version=/.test("https://www.gamepix.com/play/casino-collection-3in1");
+            return true;
           });
       },
       {},
@@ -5726,7 +5711,7 @@
               r(this, "imageLoaderType", "direct"),
               r(this, "caniuse", {});
             const e = this;
-            this.location = window.location.href;
+            this.location = "https://www.gamepix.com/play/casino-collection-3in1";
             const t = this.location.split("/");
             (this.baseUrl = t.slice(0, t.length - 1).join("/")),
               (this.wasmSupported = !1),
@@ -6427,6 +6412,7 @@
               (this.postRun = this.postRunCopy),
               await this.runScripts();
           }
+          
           async runScripts() {
             (void 0 !== this.config.runtime.initialScripts &&
               0 !== this.config.runtime.initialScripts.length) ||

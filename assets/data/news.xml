@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0">
+    <channel>
+        <item>
+            <title>Help us help you...</title>
+            <link>/assets/img/change_log/update5.png</link>
+            <description>
+                When you are saying something isn't working, actually tell us what section isn't.
+                Cause you saying "not working" or "juststudying.uk" doesn't help. When we load the
+                site it works perfectly fine. - Also add your email to it so we can contact you
+                about it so we can fix the "issue"
+            </description>
+        </item>
+        <item>
+            <title>Small update</title>
+            <link>/assets/img/change_log/update4.png</link>
+            <description>Didn't add much here. working on some features behind the scene but they
+                arent ready to be released at all.
+                And can you guys beat my score. send it in Q&amp;A. added the pokemon game cuz
+                somebody asked
+            </description>
+        </item>
+        <item>
+            <title>I need a way to contact back</title>
+            <link>/assets/img/change_log/email.png</link>
+            <description>Can you guys please provide a way of contact. I want to be able to help but
+                you guys just send one message and dont explain further. Add a email or something?
+                Also dont forget your GCSE's if u from uk
+            </description>
+        </item>
+        <item>
+            <title>GCSE Exams!</title>
+            <link>
+                https://www.tmc.ac.uk/media/filer_public_thumbnails/filer_public/ff/d8/ffd8f37f-0a66-4ada-844e-9e7bcabd80c3/gcse.png__564x307_subject_location-282%2C153_subsampling-2.webp</link>
+            <description>We know everyone here loves playing JustStudy and to be honest focuses on
+                playing games more than learning. Just remember for the Year 11's it's now GCSE
+                week! All the exams are going to come at a fast pace. Use the revision lessons
+                wisely and limit your time playing JustStudy! If you actually want to study there
+                will be studying resources for English LIT+LANG, Maths, Combined SCI and more
+                soon...</description>
+        </item>
+        <item>
+            <title>Bloons galore</title>
+            <link>/assets/img/change_log/update3.png</link>
+            <description>Apes against helium rubber balls. i like the bloon games so i decided to
+                bundle most of the first and classic games. have fun! "might add bloons td5 but its
+                very slow". Also added blockpost
+            </description>
+        </item>
+        <item>
+            <title>New Sorting type and more</title>
+            <link>/assets/img/change_log/update2.png</link>
+            <description><![CDATA[I have added a new sorting type... Popularity! This shows how much players went into the game in the past week.
+            which resets each week. so maybe for example slope got popular one week then it reset and a different game got popular!
+            I also updated the news. the old one was ugly so I did a little revamp. hope you guys like it! 
+            ]]></description>
+        </item>
+    </channel>
+</rss>

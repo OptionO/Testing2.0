@@ -1,0 +1,271 @@
+/* Base Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+    scroll-behavior: smooth;
+}
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    background: radial-gradient(circle at right bottom, #b700ff, #00ff9d);
+    color: #ffffff;
+    overflow-x: hidden;
+}
+
+/* Header & Navigation */
+header {
+    width: 100vw;
+    padding: 1vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo img {
+    height: 6vw;
+    width: auto;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2vw;
+}
+
+.nav-links li a {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.5vw;
+    transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+    color: #000000;
+}
+
+/* Hero Section */
+.hero-section {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 0 5vw;
+}
+
+.hero-content h1 {
+    font-size: 6vw;
+    text-transform: uppercase;
+    font-weight: 900;
+    margin-bottom: 2vw;
+}
+
+.hero-content p {
+    font-size: 2vw;
+    margin-bottom: 2vw;
+}
+
+.cta-button {
+    text-decoration: none;
+    color: #ffffff;
+    background: #000000;
+    padding: 1vw 2vw;
+    border-radius: 1vw;
+    font-size: 1.5vw;
+    transition: all 0.3s ease-in-out;
+}
+
+.cta-button:hover {
+    background: #ffffff;
+    color: #000000;
+}
+
+/* Features Section */
+.features-section {
+    padding: 5vw;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.features-section h2 {
+    text-align: center;
+    font-size: 4vw;
+    margin-bottom: 4vw;
+}
+
+.features-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4vw;
+}
+
+.feature-item {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 4vw;
+    border-radius: 2vw;
+    width: 25vw;
+    text-align: center;
+}
+
+.feature-item h3 {
+    font-size: 3vw;
+    margin-bottom: 2vw;
+}
+
+.feature-item p {
+    font-size: 1.5vw;
+}
+
+/* Pricing Section */
+.pricing-section {
+    padding: 5vw;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.pricing-section h2 {
+    text-align: center;
+    font-size: 4vw;
+    margin-bottom: 4vw;
+}
+
+.pricing-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4vw;
+}
+
+.pricing-card {
+    background: rgba(0, 0, 0, 0.3);
+    padding: 4vw;
+    border-radius: 2vw;
+    width: 25vw;
+    text-align: center;
+}
+
+.pricing-card h3 {
+    font-size: 3vw;
+    margin-bottom: 2vw;
+}
+
+.pricing-card .price {
+    font-size: 2.5vw;
+    margin-bottom: 2vw;
+}
+
+.pricing-card ul {
+    list-style: none;
+    margin-bottom: 2vw;
+}
+
+.pricing-card ul li {
+    font-size: 1.5vw;
+    margin: 1vw 0;
+}
+
+.pricing-card .btn {
+    text-decoration: none;
+    color: #ffffff;
+    background: #000000;
+    padding: 1vw 2vw;
+    border-radius: 1vw;
+    font-size: 1.5vw;
+    transition: all 0.3s ease-in-out;
+}
+
+.pricing-card .btn:hover {
+    background: #ffffff;
+    color: #000000;
+}
+
+/* About Section */
+.about-section {
+    padding: 5vw;
+    background: rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.about-section h2 {
+    font-size: 4vw;
+    margin-bottom: 2vw;
+}
+
+.about-section p {
+    font-size: 1.8vw;
+    max-width: 60vw;
+    margin: 0 auto;
+}
+
+/* Contact Section */
+.contact-section {
+    padding: 5vw;
+    background: rgba(255, 255, 255, 0.1);
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 4vw;
+    margin-bottom: 2vw;
+}
+
+.contact-section form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2vw;
+}
+
+.contact-section form input,
+.contact-section form textarea {
+    width: 40vw;
+    padding: 1vw;
+    border: none;
+    border-radius: 1vw;
+    background: #000000;
+    color: #ffffff;
+    font-size: 1.5vw;
+}
+
+.contact-section form textarea {
+    height: 10vw;
+}
+
+.contact-section form button {
+    padding: 1vw 2vw;
+    border: none;
+    border-radius: 1vw;
+    background: #000000;
+    color: #ffffff;
+    font-size: 1.5vw;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
+
+.contact-section form button:hover {
+    background: #ffffff;
+    color: #000000;
+}
+
+/* Footer */
+footer {
+    width: 100vw;
+    padding: 2vw;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.5);
+    font-size: 1.5vw;
+}

@@ -1,0 +1,43 @@
+<head>
+    <script src="main.js"></script>
+    <link rel="shortcut icon" id="favi" href="">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KW15Q1QG97"></script>
+    <script type="text/javascript" src="/assets/js/LoadData.js"></script>
+    <link rel="stylesheet" href="main.css">
+</head>
+
+<body>
+<div class="logo"><img src="logo.png" class="logo-img"><div class="logo-splash"><span class="logo-splash-text">test</span></div></div>
+<div class="main-cont">
+    <div class="name">Version 1.5.2</div>
+    <div class="onefivetwo">
+        <div class="main-bt" data-tooltip="The original version of eagler craft" onclick="loadfile(`5.html`);">
+            <div class="inner-bt-text" > 1.5.2</div>
+        </div>
+        <!-- <div class="main-bt" data-tooltip="The official eaglercraft ver 1.5.2 but way faster (bout 2x faster)">
+            <div class="inner-bt-text"> 1.5.2 Wasm </div>
+        </div> -->
+    </div>
+    <div class="name">Version 1.8.8</div>
+    <div class="oneeighteight">
+        <div class="main-bt" data-tooltip="The second best version. especially for pvpers..." onclick="loadfile('8.html');">
+            <div class="inner-bt-text">1.8.8</div>
+        </div>
+        <div class="main-bt" data-tooltip="You can die to sweats 2x faster in here!"onclick="loadfile('8wsm.html');">
+            <div class="inner-bt-text"> 1.8.8 Wasm </div>
+        </div>
+    </div>
+    <div class="name">Version 1.12.2</div>
+    <div class="onetwelvetwo">
+        <div class="main-bt" data-tooltip="This is the new version of eaglercraft! im suprised it even exists" onclick="loadfile('12.html');">
+            <div class="inner-bt-text">1.12.2</div>
+        </div>
+        <div class="main-bt" data-tooltip="This is really the only way you can run this version on browser" onclick="loadfile('12wsm.html');">
+            <div class="inner-bt-text" >1.12.2 Wasm </div>
+        </div>
+    </div>
+</div>
+<div class="tool-tip">
+    Testing 123 Testing
+</div>
+</body>

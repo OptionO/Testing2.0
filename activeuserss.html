@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Active Users & Popular Games</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    /* Ensure no horizontal scroll from background movement */
+    body {
+      overflow-x: hidden;
+    }
+  </style>
+</head>
+
+<body class="bg-gray-100 dark:bg-gray-900 relative">
+  <!-- Moving Background -->
+  <div id="background"
+    class="fixed top-0 left-0 w-screen h-screen bg-gradient-to-r from-blue-500 to-purple-500 dark:from-blue-700 dark:to-purple-700 opacity-20 pointer-events-none transition-transform duration-300 ease-out">
+  </div>
+
+  <!-- Header with Device Counts, Active Users Counter, Search Bar -->
+  <div id="header"
+    class="fixed top-0 left-0 right-0 bg-white dark:bg-gray-800 p-4 shadow-xl z-50 flex items-center justify-between">
+    <!-- Device Count (Top Left) -->
+    <div id="deviceCount" class="text-lg text-gray-800 dark:text-gray-100">
+      <!-- Populated dynamically -->
+    </div>
+
+    <!-- Active Users Counter (Center) -->
+    <div id="activeUserCounter"
+      class="text-2xl font-bold text-gray-800 dark:text-gray-100">
+      Active Users: 0
+    </div>
+
+    <!-- Search Input (Top Right) -->
+    <div class="flex items-center">
+      <input type="text" id="searchInput" placeholder="Search..."
+        class="border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200 rounded-md p-2" />
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="relative z-10 w-full px-4 mt-20 mb-10 flex flex-col md:flex-row gap-4">
+    <!-- Active Users Panel (Left) -->
+    <div class="flex-1 bg-white dark:bg-gray-800 p-8 rounded-lg shadow-xl">
+      <h2 class="text-3xl font-extrabold mb-6 text-gray-800 dark:text-gray-100">
+        Active Users
+      </h2>
+      <div class="overflow-x-auto">
+        <table class="min-w-full border-collapse border border-gray-200 dark:border-gray-600 rounded-lg">
+          <thead>
+            <tr
+              class="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 uppercase text-sm leading-normal">
+              <th class="py-3 vw-6 text-left">IP Address</th>
+              <th class="py-3 vw-6 text-left">Page</th>
+              <th class="py-3 vw-6 text-left">Name</th>
+              <th class="py-3 vw-6 text-left">Email</th>
+              <th class="py-3 vw-6 text-left">Device</th>
+              <th class="py-3 vw-6 text-left">Last Seen</th>
+            </tr>
+          </thead>
+          <tbody id="userTable" class="text-gray-700 dark:text-gray-200 text-sm">
+            <!-- Populated dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Popular Games Panel (Right) -->
+    <div class="flex-1 bg-white dark:bg-gray-800 p-8 rounded-lg shadow-xl">
+      <h2 class="text-3xl font-extrabold mb-6 text-gray-800 dark:text-gray-100">
+        Popular Games
+      </h2>
+      <div class="overflow-x-auto">
+        <table class="min-w-full border-collapse border border-gray-200 dark:border-gray-600 rounded-lg">
+          <thead>
+            <tr
+              class="bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300 uppercase text-sm leading-normal">
+              <th class="py-3 vw-6 text-left">Game</th>
+              <th class="py-3 vw-6 text-left">Category</th>
+              <th class="py-3 vw-6 text-left">Active Users</th>
+            </tr>
+          </thead>
+          <tbody id="gameTable" class="text-gray-700 dark:text-gray-200 text-sm">
+            <!-- Populated dynamically -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Category mapping for games
+    const categoryMap = {
+      "Gym Class": "Platformers & Skill",
+      "Pen & Paper": "Logic & Strategy",
+      "Recess": "Calm & Relaxing",
+      "Science Lab": "Experimentation & Planning",
+      "Sports Club": "Racing & Sports",
+      "Music Room": "Rhythm & Music",
+      "Math Class": "App & Extra"
+    };
+
+    // Detect device from UA
+    function parseUserAgent(ua) {
+      if (ua.includes("Windows")) return "Windows PC";
+      if (ua.includes("Macintosh")) return "Mac";
+      if (ua.includes("Android")) return "Android Device";
+      if (ua.includes("iPhone")) return "iPhone";
+      if (ua.includes("iPad")) return "iPad";
+      if (ua.includes("CrOS")) return "Chromebook";
+      return "Unknown Device";
+    }
+
+    // Filter active-users table
+    function filterTable() {
+      const filter = document.getElementById('searchInput').value.toLowerCase();
+      document.querySelectorAll('#userTable tr').forEach(row => {
+        const match = Array.from(row.querySelectorAll('td'))
+          .some(td => td.innerText.toLowerCase().includes(filter));
+        row.style.display = match ? '' : 'none';
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      fetchUsers();
+      setInterval(fetchUsers, 2000);
+      document.getElementById('searchInput').addEventListener('input', filterTable);
+    });
+
+    // Core data-fetch & render function
+    async function fetchUsers() {
+      let data;
+      try {
+        const res = await fetch('https://juststudying.uk/api/activeusers');
+        const txt = await res.text();
+        const start = txt.indexOf('[');
+        const end = txt.lastIndexOf(']');
+        data = JSON.parse(txt.substring(start, end + 1));
+      } catch (err) {
+        return console.error('Error fetching/parsing user JSON:', err);
+      }
+      const [users, popularGames] = data;
+
+      // Element references
+      const counterEl     = document.getElementById('activeUserCounter');
+      const tableBody     = document.getElementById('userTable');
+      const gameTableBody = document.getElementById('gameTable');
+      const deviceCountEl = document.getElementById('deviceCount');
+
+      if (!counterEl || !tableBody || !gameTableBody || !deviceCountEl) {
+        return console.error('Missing DOM elements');
+      }
+
+      // Load game metadata
+      let gameData = [];
+      try {
+        const gRes = await fetch('/assets/data/index.json');
+        gameData = await gRes.json();
+      } catch (e) {
+        console.warn('Local game data load failed:', e);
+      }
+
+      // Reset UI sections
+      counterEl.textContent     = `Active Users: ${users.length}`;
+      tableBody.innerHTML       = '';
+      gameTableBody.innerHTML   = '';
+      const deviceCount = {};
+
+      // Populate Active Users
+      users.forEach(user => {
+        const device = parseUserAgent(user.userAgent);
+        deviceCount[device] = (deviceCount[device] || 0) + 1;
+
+        // Derive gameName via URL path lookup
+        const parts   = user.url.split('/');
+        const pathKey = parts.slice(-2).join('/');
+        let gameInfo  = gameData.find(g => g.url.includes(pathKey));
+        let gameName  = gameInfo ? gameInfo.name : 'Unknown Game';
+        if (gameName === 'Unknown Game' && pathKey.includes('1vl')) {
+          gameName = '1V1.lol';
+        }
+
+        const tr = document.createElement('tr');
+        tr.classList.add(
+          'border-b','border-gray-200','dark:border-gray-600',
+          'transform','transition','duration-300','ease-in-out','hover:scale-105'
+        );
+        tr.innerHTML = `
+          <td class="py-3 vw-6">${user.ip}</td>
+          <td class="py-3 vw-6">
+            <a href="${user.url}" target="_blank" class="text-blue-500 hover:underline">
+              ${gameName}
+            </a>
+          </td>
+          <td class="py-3 vw-6">${user.name || 'undefined'}</td>
+          <td class="py-3 vw-6">${user.email || 'undefined'}</td>
+          <td class="py-3 vw-6">${device}</td>
+          <td class="py-3 vw-6">${new Date(user.timestamp).toLocaleString('en-GB')}</td>
+        `;
+        tableBody.appendChild(tr);
+      });
+
+      // Render device counts
+      deviceCountEl.textContent = Object
+        .entries(deviceCount)
+        .map(([dev, cnt]) => `${cnt} ${dev}`)
+        .join(', ');
+
+      // Populate Popular Games
+      Object.entries(popularGames)
+        .sort((a, b) => b[1] - a[1])
+        .forEach(([name, count]) => {
+          const info     = gameData.find(g => g.name === name);
+          const category = info 
+            ? (categoryMap[info.category] || info.category) 
+            : 'Unknown Category';
+          const tr = document.createElement('tr');
+          tr.classList.add(
+            'border-b','border-gray-200','dark:border-gray-600',
+            'transform','transition','duration-300','ease-in-out','hover:scale-105'
+          );
+          tr.innerHTML = `
+            <td class="py-3 vw-6">${name}</td>
+            <td class="py-3 vw-6">${category}</td>
+            <td class="py-3 vw-6">${count}</td>
+          `;
+          gameTableBody.appendChild(tr);
+        });
+
+      // Reapply search filter for Active Users
+      filterTable();
+    }
+
+    // Background parallax movement
+    const background = document.getElementById('background');
+    document.addEventListener('mousemove', e => {
+      const x = ((e.clientX / window.innerWidth) - 0.5) * 2;
+      const y = ((e.clientY / window.innerHeight) - 0.5) * 2;
+      background.style.transform = `translate(${x}vw, ${y}vh)`;
+    });
+  </script>
+</body>
+
+</html>

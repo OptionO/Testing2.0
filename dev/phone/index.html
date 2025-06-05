@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>1T-Item Virtualized Dropdown (Fixed)</title>
+  <style>
+    :root {
+      --item-h-vh: 2;       /* each item = 2vh */
+      --view-h-vh: 40;      /* viewport = 40vh */
+      --track-h-vh: 5000;   /* 5000vh tall scroll-track */
+    }
+    body {
+      font-family: sans-serif;
+      padding: 2vh;
+    }
+    .dropdown {
+      position: relative;
+      width: 30vw;
+    }
+    .dropdown-input {
+      width: 100%;
+      padding: 1vh;
+      box-sizing: border-box;
+      cursor: pointer;
+    }
+    .dropdown-list {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 100%;
+      max-height: var(--view-h-vh)vh;
+      border: 1px solid #999;
+      background: #fff;
+      overflow-y: auto;
+      display: none;
+      z-index: 1000;
+    }
+    .dropdown-list.open {
+      display: block;
+    }
+    .scroll-track {
+      width: 1px;                /* invisible, just for scroll */
+      height: var(--track-h-vh)vh;
+      opacity: 0;
+    }
+    #items-container {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+    }
+    .dropdown-item {
+      height: var(--item-h-vh)vh;
+      line-height: var(--item-h-vh)vh;
+      padding: 0 1vw;
+      box-sizing: border-box;
+      cursor: pointer;
+    }
+    .dropdown-item:hover {
+      background: #eef;
+    }
+  </style>
+</head>
+<body>
+
+<div class="dropdown">
+  <input id="dd-input" class="dropdown-input" type="text" readonly placeholder="Select a number…">
+  <div id="dd-list" class="dropdown-list">
+    <div class="scroll-track"></div>
+    <div id="items-container"></div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const INPUT     = document.getElementById('dd-input');
+  const LIST      = document.getElementById('dd-list');
+  const TRACK_VH  = parseFloat(getComputedStyle(document.documentElement)
+                      .getPropertyValue('--track-h-vh'));
+  const ITEM_VH   = parseFloat(getComputedStyle(document.documentElement)
+                      .getPropertyValue('--item-h-vh'));
+  const VIEW_VH   = parseFloat(getComputedStyle(document.documentElement)
+                      .getPropertyValue('--view-h-vh'));
+
+  // BigInt total count
+  const TOTAL  = 1_000_000_000_000n + 1n;
+  // Number of items in our sliding window
+  const VISIBLE = BigInt(Math.ceil(VIEW_VH / ITEM_VH) + 10);
+
+  let TRACK_PX, VIEW_PX, ITEM_PX, MAX_SCROLL;
+
+  const container = document.getElementById('items-container');
+
+  // Compute pixel dimensions
+  function initDims() {
+    TRACK_PX = window.innerHeight * (TRACK_VH / 100);
+    VIEW_PX  = LIST.clientHeight;
+    ITEM_PX  = window.innerHeight * (ITEM_VH / 100);
+    MAX_SCROLL = TRACK_PX - VIEW_PX;
+  }
+
+  function renderWindow(startIdx) {
+    const startNum = Number(startIdx); 
+    // shift our items-container down by the right pixel offset
+    container.style.transform = `translateY(${startNum * ITEM_PX}px)`;
+
+    // compute last index, clamp to TOTAL-1
+    const endIdx = startIdx + VISIBLE - 1n;
+    const maxIdx = TOTAL - 1n;
+    const last   = endIdx > maxIdx ? maxIdx : endIdx;
+
+    // draw only that slice
+    container.innerHTML = '';
+    for (let i = startIdx; i <= last; i++) {
+      const div = document.createElement('div');
+      div.className   = 'dropdown-item';
+      div.textContent = i.toLocaleString();
+      div.onclick     = () => {
+        INPUT.value = i;
+        LIST.classList.remove('open');
+      };
+      container.appendChild(div);
+    }
+  }
+
+  function onScroll() {
+    const scrollTop = LIST.scrollTop;
+    const ratio     = scrollTop / MAX_SCROLL;
+    const maxStart  = TOTAL - VISIBLE;
+    const idx       = BigInt(Math.floor(ratio * Number(maxStart)));
+    renderWindow(idx);
+  }
+
+  INPUT.addEventListener('click', () => {
+    LIST.classList.toggle('open');
+    if (LIST.classList.contains('open')) {
+      // defer until after opening so clientHeight is accurate
+      requestAnimationFrame(() => {
+        initDims();
+        LIST.scrollTop = 0;
+        renderWindow(0n);
+      });
+    }
+  });
+
+  LIST.addEventListener('scroll', onScroll);
+  document.addEventListener('click', e => {
+    if (!e.target.closest('.dropdown')) {
+      LIST.classList.remove('open');
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,226 @@
+<style>
+    :root {
+        --np-banner-height: 10vh;
+        --np-pinned-width: 20vw;
+        --np-pinned-min-height: 12vh;
+        /* you can tweak this */
+    }
+
+    /* ───────────────────────────────────────────────────── shared styles ── */
+    .np-widget {
+        position: relative;
+        color: #fff;
+        font-family: sans-serif;
+        overflow: hidden;
+        --np-bg-url: none;
+        z-index: 9999;
+        /* sits on top of everything */
+    }
+
+    .np-widget::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: var(--np-bg-url) center/cover no-repeat;
+        filter: blur(15px);
+        transform: scale(1.1);
+        z-index: 0;
+    }
+
+    .np-widget * {
+        position: relative;
+        /* enable z-index */
+        z-index: 1;
+    }
+
+    /* ───────────────────────────────────────── banner (in-line) ── */
+    #now-playing-banner {
+        width: 100%;
+        height: var(--np-banner-height);
+        display: flex;
+        align-items: center;
+        padding: 0 1vw;
+        background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    /* ──────────────────────────────────────── pinned (draggable/resize) ── */
+    #now-playing-pinned {
+        position: fixed;
+        left: 1vw;
+        bottom: 1vh;
+        width: var(--np-pinned-width);
+        min-width: 15vw;
+        min-height: var(--np-pinned-min-height);
+        resize: both;
+        overflow: hidden;
+        /* hide scrollbars, still resizable */
+        background-color: rgba(0, 0, 0, 0.4);
+        display: flex;
+        flex-direction: column;
+    }
+
+    #now-playing-pinned .np-drag-handle {
+        cursor: move;
+        background: rgba(0, 0, 0, 0.6);
+        padding: 0.5vh 1vw;
+        font-size: 1rem;
+    }
+
+    /* ─────────────────────────────────────────────── common content ── */
+    .np-content {
+        display: flex;
+        align-items: center;
+        padding: 1vh 1vw;
+    }
+
+    .np-art {
+        width: 6vh;
+        height: 6vh;
+        background-size: cover;
+        background-position: center;
+        border-radius: 1vh;
+        margin-right: 1vw;
+        flex-shrink: 0;
+    }
+
+    .np-details {
+        flex: 1;
+    }
+
+    .np-track {
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin-bottom: 0.5vh;
+    }
+
+    .np-artist {
+        font-size: 0.9rem;
+        margin-bottom: 0.5vh;
+    }
+
+    .np-times {
+        font-size: 0.8rem;
+    }
+
+    .np-progress-bar {
+        width: 100%;
+        height: 0.8vh;
+        background: rgba(255, 255, 255, 0.3);
+        border-radius: 0.4vh;
+        margin-top: 0.5vh;
+        overflow: hidden;
+    }
+
+    .np-progress {
+        width: 0;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.8);
+        transition: width 0.2s linear;
+    }
+</style>
+
+<!-- Banner (place inside your Portfolio container) -->
+<div id="now-playing-banner" class="np-widget">
+    <div class="np-content">
+        <div class="np-art" id="np-banner-art"></div>
+        <div class="np-details">
+            <div class="np-track" id="np-banner-track">Track Name</div>
+            <div class="np-artist" id="np-banner-artist">Artist Name</div>
+            <div class="np-times">
+                <span id="np-banner-elapsed">0:00</span> /
+                <span id="np-banner-remaining">0:00</span>
+            </div>
+            <div class="np-progress-bar">
+                <div class="np-progress" id="np-banner-progress"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Pinned widget (fixed, draggable, resizable) -->
+<div id="now-playing-pinned" class="np-widget">
+    <div class="np-drag-handle">Now Playing</div>
+    <div class="np-content">
+        <div class="np-art" id="np-pinned-art"></div>
+        <div class="np-details">
+            <div class="np-track" id="np-pinned-track">Track Name</div>
+            <div class="np-artist" id="np-pinned-artist">Artist Name</div>
+            <div class="np-times">
+                <span id="np-pinned-elapsed">0:00</span> /
+                <span id="np-pinned-remaining">0:00</span>
+            </div>
+            <div class="np-progress-bar">
+                <div class="np-progress" id="np-pinned-progress"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ensure DOM is fully parsed
+    document.addEventListener('DOMContentLoaded', () => {
+        const API = '/api/cider/nowplaying';
+
+        function fmt(sec) {
+            const m = Math.floor(sec / 60), s = Math.floor(sec % 60).toString().padStart(2, '0');
+            return `${m}:${s}`;
+        }
+
+        function render(info, mode) {
+            const art = info.artwork.url.replace('{w}', 600).replace('{h}', 600);
+            const cur = info.currentPlaybackTime;
+            const total = info.durationInMillis / 1000;
+            const rem = total - cur;
+            const pct = (cur / total) * 100;
+
+            const pre = mode === 'banner' ? 'np-banner' : 'np-pinned';
+            const root = document.getElementById(mode === 'banner' ? 'now-playing-banner' : 'now-playing-pinned');
+            root.style.setProperty('--np-bg-url', `url(${art})`);
+
+            document.getElementById(`${pre}-art`).style.backgroundImage = `url(${art})`;
+            document.getElementById(`${pre}-track`).innerText = info.name;
+            document.getElementById(`${pre}-artist`).innerText = info.artistName;
+            document.getElementById(`${pre}-elapsed`).innerText = fmt(cur);
+            document.getElementById(`${pre}-remaining`).innerText = fmt(rem);
+            document.getElementById(`${pre}-progress`).style.width = `${pct}%`;
+        }
+
+        async function poll() {
+            try {
+                const res = await fetch(API);
+                const json = await res.json();
+                if (json.status === 'ok') {
+                    render(json.info, 'banner');
+                    render(json.info, 'pinned');
+                }
+            } catch (e) { console.error('NP fetch error:', e); }
+        }
+
+        // draggable logic
+        const pinned = document.getElementById('now-playing-pinned');
+        const handle = pinned.querySelector('.np-drag-handle');
+        handle.addEventListener('mousedown', e => {
+            e.preventDefault();
+            const sx = e.clientX, sy = e.clientY;
+            const { left, top } = pinned.getBoundingClientRect();
+            function mv(ev) {
+                pinned.style.left = left + (ev.clientX - sx) + 'px';
+                pinned.style.top = top + (ev.clientY - sy) + 'px';
+                pinned.style.bottom = 'auto';
+            }
+            function up() {
+                document.removeEventListener('mousemove', mv);
+                document.removeEventListener('mouseup', up);
+            }
+            document.addEventListener('mousemove', mv);
+            document.addEventListener('mouseup', up);
+        });
+
+        // kickoff
+        poll();
+        setInterval(poll, 1000);
+    });
+</script>

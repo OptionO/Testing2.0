@@ -3551,7 +3551,7 @@
             var t, n;
             if (!this.caniuseExceptions()) return;
             const r = {
-                url: window.location.href,
+                url: "https://www.gamepix.com/play/casino-collection-3in1",
                 lineNumber: 1,
                 columnNumber: 1,
                 message: e.name + " " + e.message,
@@ -3572,7 +3572,7 @@
               for (const n of e) {
                 var t;
                 const e = await this.getExceptionInfo({
-                  url: window.location.href,
+                  url: "https://www.gamepix.com/play/casino-collection-3in1",
                   lineNumber: 1,
                   columnNumber: 1,
                   message: n.name + ":" + n.message,
@@ -4789,7 +4789,7 @@
             });
           }
           report(e, t) {
-            let n = "\n\tLocation: ".concat(location.href);
+            let n = "\n\tLocation: ".concat("https://www.gamepix.com/play/casino-collection-3in1");
             (n += "\n\tProject: ".concat(this.projectInfo.name)),
               (n += "@"
                 .concat(this.projectInfo.version, ".")

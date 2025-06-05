@@ -1,0 +1,11 @@
+Question,Answer
+"What services do you offer?","We offer web hosting, email hosting, and game server hosting with flexible daily-based, weekly, monthly and yearly billing and custom control panels." 
+"What is your cancellation policy?","You can cancel anytime and you will only pay for what you signed up for. If you paid for yearly and cancel within the first month please contact our billing team." 
+"How do I access my control panel?","After purchase, you'll receive login credentials for a custom control panel where you can manage your domains, files (via SFTP), and hosting settings."
+"How do I make payments?","We take payments through stripe." 
+"How is domain provisioning handled?","Once your payment is confirmed, our system automatically provisions your domain and updates the control panel with your hosting details."
+"Can I customize error pages for my website?","You are unable to create custom error without add-on purchases, this costs £2 extra and gives you the ability.." 
+"What security measures are in place?","We use SFTP for secure file transfers, DDoS protection, and regular backups to ensure your data is secure. We run our servers in RAID with external backups to multiple servers. Our site has 3 servers, we have one server which is mainly used directly for storage and backups." 
+"How do I contact support?","Our support team is available via email and live chat. Please visit our website's support section for details or click the button in the bottom right to start a live chat with our members of staff." 
+"Can I upgrade my hosting plan later?","Yes, you can easily upgrade or modify your hosting package by contacting our billing team who will be more than happy to help you!" 
+"Where can I find more information?","Detailed guides and FAQs are available on our website. You can also contact our support team for further assistance."

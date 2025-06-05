@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:FILL@1" />
+    <title>ZenoHost | Contact Us</title>
+    <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+</head>
+
+<body bg>
+    <nav class="fixed top-[2vw] right-[2vw] flex items-center justify-between gap-[1vw] z-[50]
+    bg-gradient-to-r from-[#7CF03D] via-[#3ecf5f] to-[var(--bg-secondary-color)]
+    p-[1vw] rounded-[1vw] shadow-md w-[96vw]">
+        <div class="flex items-center gap-[1vw]">
+            <a href="index.html#home"
+                class="text-[1.8vw] font-medium text-white hover:underline transition-all transform hover:scale-105">Home</a>
+            <a href="index.html#pricing"
+                class="text-[1.8vw] font-medium text-white hover:underline transition-all transform hover:scale-105">Pricing</a>
+        </div>
+
+        <div class="flex items-center gap-[1vw]">
+            <a href="#" class="text-[1.8vw] font-medium text-white underline transform scale-105 cursor-pointer">Contact
+                Us</a>
+            <button id="themeToggle"
+                class="flex items-center justify-center bg-[#7CF03D] text-[var(--bg-color)] px-[1vw] py-[1vw] text-[1.2vw] rounded-[2vw] font-semibold cursor-pointer transition duration-300 transform hover:scale-105">
+                <span id="themeIcon" class="material-symbols-outlined text-[1.5vw]">light_mode</span>
+            </button>
+        </div>
+    </nav>
+
+    <main class="flex flex-col justify-center items-center pt-[10vw] px-[5vw]">
+        <h1 class="text-[3vw] font-bold text-[var(--title)] mb-[2vw]">Get in Touch with ZenoHost</h1>
+        <p class="text-[1.5vw] mb-[3vw] max-w-[60vw] text-center">
+            We'd love to hear from you. Whether you're a current client, a potential customer, or just have a question,
+            reach out and we'll get back to you as soon as possible.
+        </p>
+
+        <form class="bg-[var(--secondary-bg-color)] p-[3vw] rounded-[2vw] shadow-lg w-full max-w-[50vw]">
+            <div class="mb-[2vw]">
+                <label class="block text-[1.2vw] font-semibold mb-[0.5vw]" for="name">Your Name</label>
+                <input
+                    class="w-full p-[1vw] bg-[var(--input-bg)] text-[var(--input-text)] rounded-[1vw] border border-[var(--border-color)]"
+                    type="text" id="name" name="name" required>
+            </div>
+
+            <div class="mb-[2vw]">
+                <label class="block text-[1.2vw] font-semibold mb-[0.5vw]" for="email">Email</label>
+                <input
+                    class="w-full p-[1vw] bg-[var(--input-bg)] text-[var(--input-text)] rounded-[1vw] border border-[var(--border-color)]"
+                    type="email" id="email" name="email" required>
+            </div>
+
+            <div class="mb-[2vw]">
+                <label class="block text-[1.2vw] font-semibold mb-[0.5vw]" for="message">Message</label>
+                <textarea
+                    class="w-full p-[1vw] bg-[var(--input-bg)] text-[var(--input-text)] rounded-[1vw] border border-[var(--border-color)] h-[15vw]"
+                    id="message" name="message" required></textarea>
+            </div>
+
+            <button type="submit"
+                class="bg-[#7CF03D] text-[var(--bg-color)] px-[2vw] py-[1vw] rounded-[2vw] text-[1.3vw] font-bold hover:opacity-90 transition w-full">Send
+                Message</button>
+        </form>
+    </main>
+
+    <footer class="w-full bg-[var(--secondary-bg-color)] text-[var(--text-color)] py-[3vw] text-center mt-[6vw]">
+        <p class="text-[1vw]">© 2025 ZenoHost. All rights reserved.</p>
+    </footer>
+</body>
+
+</html>
