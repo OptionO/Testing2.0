@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width,user-scalable=no,initial-scale=1"
+    />
+    <link rel="shortcut icon" id="favi" href="">
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KW15Q1QG97"></script>
+    <script type="text/javascript" src="/assets/js/LoadData.js"></script>
+    <style>
+      #canvas,
+      body,
+      html {
+        margin: 0;
+        padding: 0;
+        border: 0;
+      }
+      body {
+        color: #fff;
+        background-color: #000;
+        overflow: hidden;
+        touch-action: none;
+      }
+      #canvas {
+        display: block;
+      }
+      #canvas:focus {
+        outline: 0;
+      }
+      #status,
+      #status-progress,
+      #status-splash {
+        position: absolute;
+        left: 0;
+        right: 0;
+      }
+      #status,
+      #status-splash {
+        top: 0;
+        bottom: 0;
+      }
+      #status {
+        background-color: #000;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        visibility: hidden;
+      }
+      #status-splash {
+        max-height: 100%;
+        max-width: 100%;
+        margin: auto;
+      }
+      #status-splash.show-image--false {
+        display: none;
+      }
+      #status-splash.fullsize--true {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+      }
+      #status-splash.use-filter--false {
+        image-rendering: pixelated;
+      }
+      #status-notice,
+      #status-progress {
+        display: none;
+      }
+      #status-progress {
+        bottom: 10%;
+        width: 50%;
+        margin: 0 auto;
+      }
+      #status-notice {
+        background-color: #5b3943;
+        border-radius: 0.5rem;
+        border: 1px solid #9b3943;
+        color: #e0e0e0;
+        font-family: "Noto Sans", "Droid Sans", Arial, sans-serif;
+        line-height: 1.3;
+        margin: 0 2rem;
+        overflow: hidden;
+        padding: 1rem;
+        text-align: center;
+        z-index: 1;
+      }
+    </style>
+    <link rel="apple-touch-icon" href="CrazyCattle3D.apple-touch-icon.png" />
+  </head>
+  <body>
+    <canvas id="canvas">Your browser does not support the canvas tag.</canvas
+    ><noscript>Your browser does not support JavaScript.</noscript>
+    <div id="status">
+      <img
+        id="status-splash"
+        class="show-image--true fullsize--true use-filter--true"
+        src="CrazyCattle3D.png"
+        alt=""
+      /><progress id="status-progress"></progress>
+      <div id="status-notice"></div>
+    </div>
+    <script src="CrazyCattle3D.js"></script>
+    <script>
+      const GODOT_CONFIG = {
+          args: [],
+          canvasResizePolicy: 2,
+          ensureCrossOriginIsolationHeaders: !0,
+          executable: "CrazyCattle3D",
+          experimentalVK: !1,
+          fileSizes: {
+            "CrazyCattle3D.pck": 18945168,
+            "CrazyCattle3D.wasm": 43699190,
+          },
+          focusCanvas: !0,
+          gdextensionLibs: [],
+        },
+        GODOT_THREADS_ENABLED = !1,
+        engine = new Engine(GODOT_CONFIG);
+      !(function () {
+        const e = document.getElementById("status"),
+          r = document.getElementById("status-progress"),
+          t = document.getElementById("status-notice");
+        let n = !0,
+          o = "";
+        function i(i) {
+          if (o !== i && n) {
+            if ("hidden" === i) return e.remove(), void (n = !1);
+            (e.style.visibility = "visible"),
+              (r.style.display = "progress" === i ? "block" : "none"),
+              (t.style.display = "notice" === i ? "block" : "none"),
+              (o = i);
+          }
+        }
+        function s(e) {
+          for (; t.lastChild; ) t.removeChild(t.lastChild);
+          e.split("\n").forEach((e) => {
+            t.appendChild(document.createTextNode(e)),
+              t.appendChild(document.createElement("br"));
+          });
+        }
+        function a(e) {
+          console.error(e),
+            e instanceof Error
+              ? s(e.message)
+              : s("string" == typeof e ? e : "An unknown error occurred."),
+            i("notice"),
+            (n = !1);
+        }
+        const l = Engine.getMissingFeatures({ threads: false });
+        if (0 !== l.length)
+          if (
+            GODOT_CONFIG.serviceWorker &&
+            GODOT_CONFIG.ensureCrossOriginIsolationHeaders &&
+            "serviceWorker" in navigator
+          ) {
+            let e;
+            try {
+              e = navigator.serviceWorker.getRegistration();
+            } catch (r) {
+              e = Promise.reject(
+                new Error("Service worker registration failed.")
+              );
+            }
+            Promise.race([
+              e
+                .then((e) =>
+                  null != e
+                    ? Promise.reject(
+                        new Error("Service worker already exists.")
+                      )
+                    : e
+                )
+                .then(() => engine.installServiceWorker()),
+              new Promise((e) => {
+                setTimeout(() => e(), 2e3);
+              }),
+            ])
+              .then(() => {
+                window.location.reload();
+              })
+              .catch((e) => {
+                console.error("Error while registering service worker:", e);
+              });
+          } else {
+            a(
+              "Error\nThe following features required to run Godot projects on the Web are missing:\n" +
+                l.join("\n")
+            );
+          }
+        else
+          i("progress"),
+            engine
+              .startGame({
+                onProgress: function (e, t) {
+                  e > 0 && t > 0
+                    ? ((r.value = e), (r.max = t))
+                    : (r.removeAttribute("value"), r.removeAttribute("max"));
+                },
+              })
+              .then(() => {
+                i("hidden");
+              }, a);
+      })();
+    </script>
+    <script
+      defer="defer"
+      src="https://static.cloudflareinsights.com/beacon.min.js"
+      data-cf-beacon="{token: cae7fb1a7f1f4512a5c1c7edd9b3b243}"
+    ></script>
+  </body>
+</html>
