@@ -1,0 +1,1571 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<link rel="shortcut icon" id="favi" href="">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KW15Q1QG97"></script>
+	<script type="text/javascript" src="/assets/js/LoadData.js"></script>
+	<script>!function(i){var c="addEventListener",a="removeEventListener";"function"!=typeof Date.now&&(Date.now=function(){return+new Date});var r,f,u,p,e,t=window.performance;if(void 0===t&&(window.performance=t={}),"function"!=typeof t.now){var n=Date.now();t.timing&&t.timing.navigationStart&&(n=t.timing.navigationStart),t.now=function(){return Date.now()-n}}"function"!=typeof Function.prototype.bind&&(Function.prototype.bind=function(n){var o=this,t=arguments.length-1,r=[];if(0<t)for(r.length=t;t--;)r[t]=arguments[t+1];if("function"!=typeof o)throw new TypeError;function i(){for(var t=arguments.length,e=new Array(t);t--;)e[t]=arguments[t];return e=r.concat(e),o.apply(this instanceof i?this:n,e)}return i.prototype=function t(e){if(e&&(t.prototype=e),!(this instanceof t))return new t}(o.prototype),i}),"function"!=typeof Object.create&&(Object.create=function(t,e){if("object"!=typeof t&&"function"!=typeof t)throw new TypeError("Object prototype may only be an Object: "+t);if(null===t)throw new Error("This browser's implementation of Object.create is a shim and doesn't support \"null\" as the first argument.");if(void 0!==e)throw new Error("This browser's implementation of Object.create is a shim and doesn't support a second argument.");function n(){}return n.prototype=t,new n}),"function"!=typeof Object.assign&&Object.defineProperty(Object,"assign",{value:function(t,e){if(null===t)throw new TypeError("Cannot convert undefined or null to object");for(var n=Object(t),o=1;o<arguments.length;o++){var r=arguments[o];if(null!==r)for(var i in r)Object.prototype.hasOwnProperty.call(r,i)&&(n[i]=r[i])}return n},writable:!0,configurable:!0}),"function"!=typeof Object.keys&&(r=Object.prototype.hasOwnProperty,f=!{toString:null}.propertyIsEnumerable("toString"),p=(u=["toString","toLocaleString","valueOf","hasOwnProperty","isPrototypeOf","propertyIsEnumerable","constructor"]).length,Object.keys=function(t){if("function"!=typeof t&&("object"!=typeof t||null===t))throw new TypeError("Object.keys called on non-object");var e,n,o=[];for(e in t)r.call(t,e)&&o.push(e);if(f)for(n=0;n<p;n++)r.call(t,u[n])&&o.push(u[n]);return o}),function(){var t=("undefined"==typeof EventTarget?Node:EventTarget).prototype,o=t[c],r=t[a],e=!1;try{var n=Object.defineProperty({},"passive",{get:function(){e=!0}});i[c]("test",null,n),i[a]("test",null,n)}catch(t){console.error("Polyfill error:",t)}e||(t[c]=function(t,e,n){return"object"==typeof n&&(n=n.capture),o.call(this,t,e,n)},t[a]=function(t,e,n){return"object"==typeof n&&(n=n.capture),r.call(this,t,e,n)})}(),"function"!=typeof i.encodeURI&&(e=i.escape,i.encodeURI=i.escape=function(t){return e(t)}),"function"!=typeof Math.seed&&(Math.seed=function(t){var e=t,n=426381559378,o=4294967295;return function(){var t=((n=18e3*(65535&n)+(n>>16)&o)<<16)+(e=36969*(65535&e)+(e>>16)&o)&o;return.5+(t/=4294967296)}})}(this);
+</script>
+
+	<script>
+		window.__FRVR = window.__FRVR || {};
+		window.__FRVR.startTime = Date.now();
+		window.LEGACY_COORD_SYSTEM = true;
+
+	</script>
+
+	<meta charset="UTF-8"/>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+
+	<!--
+		/**
+		* @author Chris Benjaminsen http://chrisbenjaminsen.com/ @benjaminsen
+		 */
+		/** @license
+			Gold Digger FRVR 1.2.4
+			More info at http://frvr.com
+
+			Copyright (c) 2013+ FRVR Limited
+
+			All Rights Reserved!
+			FRVR is a registered trademark of FRVR Limited
+		*/
+		/**
+			Well hello there!
+
+			I see you are interested in the details of how this game was made!
+			It's written using a custom HTML5 engine built around PixiJS.
+
+			While I can't tell you more on the how, there is much more on the why to be find at 
+			http://blog.chrisbenjaminsen.com where I write frequent status updates on the games I build
+			under the FRVR brand - - including a 100% honest track record of money earned and spend.
+
+			Hack on!
+			Chris Benjaminsen
+			chrisbenjaminsen.com
+
+			- - - - - - - - - - - - - -
+
+			Gold Digger FRVR would not be possible without the following open source projects:
+
+			pixi.js - v2.2.3
+			Copyright (c) 2012-2014, Mat Groves
+			http://goodboydigital.com/
+			pixi.js is licensed under the MIT License.
+			http://www.opensource.org/licenses/mit-license.php
+			Mat Groves http://matgroves.com/ @Doormat23
+		*/
+	-->
+
+	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, viewport-fit=cover">
+	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="theme-color" content="#202020">
+	<meta name="HandheldFriendly" content="true" />	
+	<meta name="format-detection" content="telephone=no">
+  	<meta name="msapplication-tap-highlight" content="no">
+	<meta name="google" content="notranslate" />   
+
+
+	<link rel="apple-touch-icon" sizes="60x60" href="v/1576154523809/i/web/icon60x60.png"/>
+	<link rel="apple-touch-icon" sizes="76x76" href="v/1576154523809/i/web/icon76x76.png"/>
+	<link rel="apple-touch-icon" sizes="120x120" href="v/1576154523809/i/web/icon120x120.png"/>
+	<link rel="apple-touch-icon" sizes="196x196" href="v/1576154523809/i/web/icon196x196.png"/>
+	<link rel="apple-touch-icon" sizes="256x256" href="v/1576154523809/i/web/icon256x256.png"/>
+	<link rel="apple-touch-icon" sizes="1024x1024" href="v/1576154523809/i/web/icon1024x1024.png"/>
+	<style>
+
+		body {
+			background:#c8c8c8;
+			overflow:hidden;
+			position:fixed;
+			font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+			border:0px;padding:0px;margin:0px;
+			width:100%;
+			height:100%;
+			padding-top: constant(safe-area-inset-top);
+		}
+
+		preloader{
+			display:block;
+			width:100%;
+			height:100%;
+			background: #EEEEEE;
+			background:radial-gradient(ellipse at center, #ffffff 1%,#c8c8c8 150%);
+			position:fixed;
+			z-index:5;
+		}
+
+		preloader canvas, preloader img{
+			position: fixed;
+		}
+
+		preloader loadbar{
+			display:none;
+			position:fixed;
+			border:1px solid #afafaf;
+		}
+
+		preloader loadbar div{
+			display:block;
+			width:0%; 
+			height:100%;
+			background-color:#007bb2;
+		}
+
+		#gameCanvas{
+			position: fixed;
+			top:0px;
+			left:0px;
+			width:0px;
+			height:0px;
+			background-color:#000000
+		}
+
+		#overlay{
+			position:absolute;
+			z-index:3;
+			left:50%;
+			margin-left:-70px;
+			visibility:hidden;
+			bottom:3px;
+			overflow:hidden;
+			text-align: center;
+		}
+
+		#overlay div{
+			float:left;
+		}
+
+		#overlay.cn {
+				margin-left: -190px;
+		}
+
+		/* Google+ share button */
+		#overlay.cn div#___plusone_0 {
+			width: 68px !important;
+		}
+
+		#overlay.cn div#___plusone_0 iframe {
+			position: relative !important;
+			top: -4px !important;
+		}
+
+		/* Sina Weibo share button */
+		#overlay wb\:share-button iframe {
+			width: 105px !important;
+		}
+
+		/* QZone share button */
+		#overlay iframe[version="1.0"] {
+			position: relative !important;
+			top: -2px;
+		}
+
+		@-ms-viewport{width:100%}
+
+		content{
+			background-color:#ffffff;
+			display: block;
+			padding:20px;
+			height:100%;
+			overflow:scroll;
+		}
+
+		content metadata{
+			float:right;
+			margin-left:10px;
+			text-align:center;
+		}
+
+		h1{
+			margin:0px;
+			font-weight:100;
+			font-size:50px;
+		}
+		a{
+			line-height:2em;
+		}
+		h3{
+			margin-bottom:0px;
+		}
+
+		@keyframes w{0%{transform:rotate(0deg);}20%{transform:rotate(-3deg) scale(1.4) translate(0px,-5px);}50%{transform:rotate(3deg) scale(1.4) translate(0px,-5px);}80%{transform:rotate(-3deg) scale(1.4) translate(0px,-5px);}100%{transform:rotate(0deg);}}
+		.w {animation:w 1.5s 1;}
+
+	</style>
+
+		<script>
+		(() => {
+			'use strict';
+
+			var _0x21c733 = {
+				0x396: (_0x5e89ba, _0x414548, _0x4687b5) => {
+				_0x4687b5.r(_0x414548);
+				_0x4687b5.d(_0x414548, {
+					'adSdk': () => _0x5d3514
+				});
+				var _0x3b357d = _0x4687b5(0xc8);
+				var _0x145e6e = {
+					'doodoo-games': 'data-ad-client=ca-pub-9036534197476572,data-ad-channel=6615461961',
+					'doodoo-games-admanager': "https://pubads.g.doubleclick.net/gampad/ads?iu=/22688332785/doodoo-ndd/doodoo-afg-0103&description_url=http%3A%2F%2Fdoodoo.love&tfcd=0&npa=0&sz=400x300%7C640x480&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator="
+				};
+				function _0x3b2d67(_0x383299, _0x1f5e4c, _0x364ee3) {
+					if (_0x1f5e4c in _0x383299) {
+					Object.defineProperty(_0x383299, _0x1f5e4c, {
+						'value': _0x364ee3,
+						'enumerable': true,
+						'configurable': true,
+						'writable': true
+					});
+					} else {
+					_0x383299[_0x1f5e4c] = _0x364ee3;
+					}
+				}
+				class _0x5d3514 {
+					static ['isReady'];
+					constructor(_0x550199) {
+					this.constructor.config = _0x550199;
+					this.constructor._insert_tagmanager();
+					this.constructor._get_ad_code().then(_0x125b5e => {
+						this.constructor.is_adsense = _0x125b5e.is_adsense;
+						if (this.constructor.is_adsense) {
+						this.constructor._config_adsense(_0x125b5e.ori_ad_data);
+						} else {
+						this.constructor._config_adx(_0x125b5e.ori_ad_data);
+						}
+					});
+					}
+					['interstitialAd'](_0x5e1b2f) {
+					0x0;
+					_0x3b357d.MY_CONSOLE_ERROR("interstitialAd config", _0x5e1b2f);
+					if (this.constructor.is_adsense) {
+						adBreak({
+						'type': "start",
+						'beforeAd'() {
+							_0x5e1b2f.beforeAd();
+						},
+						'afterAd'() {
+							_0x5e1b2f.afterAd();
+						},
+						'adBreakDone'(_0x418687) {
+							switch (_0x418687.breakStatus) {
+							case "timeout":
+							case "error":
+							case 'frequencyCapped':
+							case "other":
+								_0x5e1b2f.error(_0x418687.breakStatus);
+							}
+						}
+						});
+					} else {
+						this.constructor._play_adx_ad(_0x5e1b2f);
+					}
+					}
+					["rewardAd"](_0x3b65c9) {
+					if (this.constructor.is_adsense) {
+						adBreak({
+						'type': "reward",
+						'beforeAd'() {
+							_0x3b65c9.beforeAd();
+						},
+						'beforeReward'(_0x1959b4) {
+							_0x1959b4();
+						},
+						'adDismissed'() {
+							_0x3b65c9.adDismissed();
+						},
+						'adViewed'() {
+							_0x3b65c9.adViewed();
+						},
+						'adBreakDone'(_0x433cf2) {
+							switch (_0x433cf2.breakStatus) {
+							case 'timeout':
+							case 'error':
+							case 'frequencyCapped':
+							case "other":
+								_0x3b65c9.error(_0x433cf2.breakStatus);
+							}
+						}
+						});
+					} else {
+						this.constructor._play_adx_ad(_0x3b65c9);
+					}
+					}
+					static ["_play_adx_ad"](_0x339894) {
+					if (!this.is_loading) {
+						this.is_loading = true;
+						this.adx_callback = _0x339894;
+						this.constructor.adx_callback = _0x339894;
+						window.adsLoader.requestAds(window.adsRequest);
+					}
+					}
+					static ["_config_adx"](_0x3c4ef4) {
+					var _0x3c5dcf = document.createElement("script");
+					_0x3c5dcf.type = "text/javascript";
+					_0x3c5dcf.src = '//imasdk.googleapis.com/js/sdkloader/ima3.js';
+					document.head.appendChild(_0x3c5dcf);
+					_0x3c5dcf.onload = () => {
+						var _0x19c400 = window.getComputedStyle(this.config.el).position;
+						this.isReady = true;
+						if ("static" === _0x19c400) {
+						this.config.el.style.position = "relative";
+						}
+						window.adContainer = document.createElement("div");
+						window.adContainer.style.cssText = 'position:absolute;left:0;top:0;width:100%;z-index:999;';
+						this.config.el.appendChild(window.adContainer);
+						this._initializeIMA(_0x3c4ef4);
+						window.addEventListener("resize", () => {
+						var _0xac115a;
+						var _0xea5d0f;
+						if (window.adsManager) {
+							_0xac115a = this.config.el.clientWidth;
+							_0xea5d0f = this.config.el.clientHeight;
+							window.adsManager.resize(_0xac115a, _0xea5d0f, google.ima.ViewMode.NORMAL);
+						}
+						});
+					};
+					}
+					static ["_initializeIMA"](_0x1bfe8b) {
+					google.ima.settings.setVpaidMode(google.ima.ImaSdkSettings.VpaidMode.INSECURE);
+					window.adDisplayContainer = new google.ima.AdDisplayContainer(window.adContainer);
+					window.adsLoader = new google.ima.AdsLoader(window.adDisplayContainer);
+					window.adsLoader.getSettings().setVpaidMode(google.ima.ImaSdkSettings.VpaidMode.INSECURE);
+					window.adsLoader.addEventListener(google.ima.AdsManagerLoadedEvent.Type.ADS_MANAGER_LOADED, this._onAdsManagerLoaded.bind(this), false);
+					window.adsLoader.addEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, this._onAdError.bind(this), false);
+					window.adsRequest = new google.ima.AdsRequest();
+					window.adsRequest.adTagUrl = _0x1bfe8b;
+					window.adsRequest.vastLoadTimeout = 0x3e8;
+					window.adsRequest.linearAdSlotWidth = this.config.el.clientWidth;
+					window.adsRequest.linearAdSlotHeight = this.config.el.clientHeight;
+					window.adDisplayContainer.initialize();
+					}
+					static ["_onAdsManagerLoaded"](_0x5655d2) {
+					window.adsManager = _0x5655d2.getAdsManager(this.config.el);
+					var _0x110e18 = this.config.el.clientWidth;
+					var _0x5655d2 = this.config.el.clientHeight;
+					this.is_loading = false;
+					window.adsManager.init(_0x110e18, _0x5655d2, google.ima.ViewMode.NORMAL);
+					window.adsManager.start();
+					window.adsManager.addEventListener(google.ima.AdErrorEvent.Type.AD_ERROR, this._onAdError.bind(this));
+					window.adsManager.addEventListener(google.ima.AdEvent.Type.CONTENT_PAUSE_REQUESTED, () => {
+						window.adContainer.style.display = "block";
+						this.adx_callback.beforeAd();
+					});
+					window.adsManager.addEventListener(google.ima.AdEvent.Type.CONTENT_RESUME_REQUESTED, () => {
+						window.adContainer.style.display = 'none';
+						if (this.adx_callback.afterAd) {
+						this.adx_callback.afterAd();
+						}
+					});
+					window.adsManager.addEventListener(google.ima.AdEvent.Type.SKIPPED, () => {
+						if (this.adx_callback.adDismissed) {
+						this.adx_callback.adDismissed();
+						}
+					});
+					window.adsManager.addEventListener(google.ima.AdEvent.Type.COMPLETE, () => {
+						window.adContainer.style.display = 'none';
+						if (this.adx_callback.adViewed) {
+						this.adx_callback.adViewed();
+						}
+					});
+					}
+					static ['_onAdError'](_0x2dd8f4) {
+					this.is_loading = false;
+					window.adContainer.style.display = "none";
+					this.adx_callback.error(_0x2dd8f4.getError());
+					}
+					static ["_config_adsense"](_0xc0fd48) {
+					console.log("_config_adsense", _0xc0fd48);
+					let _0x574c6a = this;
+					let _0x4b1b46 = document.createElement('script');
+					_0x4b1b46.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9036534197476572";
+					_0x4b1b46.setAttribute("data-ad-frequency-hint", "30s");
+					var _0x2a8840 = _0xc0fd48.split(',');
+					for (let _0x2f1e64 = 0x0; _0x2f1e64 < _0x2a8840.length; _0x2f1e64++) {
+						_0x4b1b46.setAttribute(_0x2a8840[_0x2f1e64].split('=')[0x0], _0x2a8840[_0x2f1e64].split('=')[0x1]);
+					}
+					if (this.config.is_test) {
+						_0x4b1b46.setAttribute("data-adbreak-test", 'on');
+					}
+					document.head.appendChild(_0x4b1b46);
+					window.adsbygoogle = window.adsbygoogle || [];
+					window.adBreak = window.adConfig = _0x212d5f => window.adsbygoogle.push(_0x212d5f);
+					adConfig({
+						'preloadAdBreaks': 'on',
+						'sound': 'on',
+						'onReady'() {
+						_0x574c6a.isReady = true;
+						if (window.PokiSDK && window.PokiSDK.customEvent) {
+							window.PokiSDK.customEvent("AdsenseOnReady");
+						}
+						}
+					});
+					}
+					static ['_get_ad_code']() {
+					var _0x32446d = document.location;
+					var _0x2fc0be = new URLSearchParams(_0x32446d.search).get("pubid");
+					var _0x32446d = this.config.client;
+					var _0x10ac07 = _0x145e6e[_0x2fc0be + '-' + _0x32446d];
+					let _0x356088 = !!(_0x10ac07 = _0x10ac07 || _0x145e6e[_0x32446d] || "https://pubads.g.doubleclick.net/gampad/ads?iu=/22688332785/doodoo-ndd/doodoo-afg-0103&description_url=http%3A%2F%2Fdoodoo.love&tfcd=0&npa=0&sz=400x300%7C640x480&gdfp_req=1&output=vast&unviewed_position_start=1&env=vp&impl=s&correlator=").startsWith("data-ad-client");
+					return new Promise(_0x125b9d => {
+						_0x125b9d({
+						'is_adsense': _0x356088,
+						'ori_ad_data': _0x10ac07
+						});
+					});
+					}
+					static ['_insert_tagmanager']() {
+					var _0x2087a4 = document.getElementById("gtm-script");
+					if (!_0x2087a4) {
+						const _0x5c3505 = document.createElement("script");
+						_0x5c3505.id = "gtm-script";
+						_0x5c3505.innerHTML = "(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\n  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\n  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=\n  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);\n  })(window,document,'script','dataLayer','GTM-WXGPQ5Q');";
+						document.head.appendChild(_0x5c3505);
+						window.onload = () => {
+						var _0x3a96e8;
+						if (!document.getElementById("gtm-noscript")) {
+							(_0x3a96e8 = document.createElement('noscript')).id = 'gtm-noscript';
+							_0x3a96e8.innerHTML = "<iframe src=\"https://www.googletagmanager.com/ns.html?id=GTM-WXGPQ5Q\"\n    height=\"0\" width=\"0\" style=\"display:none;visibility:hidden\"></iframe>";
+							document.body.appendChild(_0x5c3505);
+						}
+						};
+					}
+					}
+				}
+				_0x3b2d67(_0x5d3514, 'config', undefined);
+				_0x3b2d67(_0x5d3514, "is_adsense", undefined);
+				_0x3b2d67(_0x5d3514, "isReady", undefined);
+				_0x3b2d67(_0x5d3514, "adx_callback", {
+					'error': _0x3b357d.MY_CONSOLE_ERROR
+				});
+				_0x3b2d67(_0x5d3514, 'is_loading', false);
+				},
+				0xc8: (_0x843b30, _0x19c23d) => {
+				Object.defineProperty(_0x19c23d, "__esModule", {
+					'value': true
+				});
+				_0x19c23d.MY_CONSOLE_ERROR = _0x19c23d.MY_CONSOLE_LOG = undefined;
+				_0x19c23d.MY_CONSOLE_LOG = window.console.log;
+				_0x19c23d.MY_CONSOLE_ERROR = window.console.log;
+				},
+				0x25f: function (_0x30919d, _0x3a4ca8, _0x35f350) {
+				function _0x273ba2(_0x8a911c) {
+					_0x8a911c = _0x8a911c || function () {};
+					if (_0x20fa1e.adSdk.isReady) {
+					if (null != _0x2a161f) {
+						_0x2a161f.rewardAd({
+						'beforeAd': function () {
+							_0x141532("The ad starts playing, and the game should pause.");
+							if (window.dataLayer) {
+							window.dataLayer.push({
+								'event': "doodoo_sdk_reward",
+								'action': 'beforeAd'
+							});
+							}
+						},
+						'adDismissed': function () {
+							_0x141532("Player dismissed the ad before completion.");
+							_0x8a911c(true, "Player dismissed the ad before completion.");
+							if (window.dataLayer) {
+							window.dataLayer.push({
+								'event': "doodoo_sdk_reward",
+								'action': 'dismiss'
+							});
+							}
+						},
+						'adViewed': function () {
+							_0x141532("Ad was viewed and closed.");
+							_0x8a911c(true, "Ad was viewed and closed.");
+							if (window.dataLayer) {
+							window.dataLayer.push({
+								'event': "doodoo_sdk_reward",
+								'action': 'viewed'
+							});
+							}
+						},
+						'error': function (_0x8fa7dc) {
+							0x0;
+							_0x2225b9.MY_CONSOLE_LOG("AD_ERROR", _0x8fa7dc);
+							_0x8a911c(false, _0x8fa7dc);
+							if (window.dataLayer) {
+							window.dataLayer.push({
+								'event': "doodoo_sdk_reward",
+								'action': "error"
+							});
+							}
+						}
+						});
+					}
+					} else {
+					_0x8a911c(false, "doodoo ads not ready");
+					_0x141532("doodoo ads not ready");
+					}
+				}
+				function _0x33d416(_0x2ab905) {
+					_0x2ab905 = _0x2ab905 || function () {};
+					if (_0x20fa1e.adSdk.isReady) {
+					if (null != _0x2a161f) {
+						_0x2a161f.interstitialAd({
+						'beforeAd': function () {
+							_0x141532("The ad starts playing, and the game should pause.");
+							if (window.dataLayer) {
+							window.dataLayer.push({
+								'event': "doodoo_sdk_interstitial",
+								'action': "beforeAd"
+							});
+							}
+						},
+						'afterAd': function () {
+							_0x2ab905(true, "Ads show normally");
+							_0x141532("Ads show normally,ad has been closed,Resume the game and re-enable sound.");
+							if (window.dataLayer) {
+							window.dataLayer.push({
+								'event': "doodoo_sdk_interstitial",
+								'action': "afterAd"
+							});
+							}
+						},
+						'adDismissed': function () {
+							_0x141532("Ads dismissed, ad has been closed,Resume the game and re-enable sound.");
+							if (window.dataLayer) {
+							window.dataLayer.push({
+								'event': "doodoo_sdk_interstitial",
+								'action': 'adDismissed'
+							});
+							}
+						},
+						'adViewed': function () {
+							_0x141532("Ad was viewed and closed.");
+							_0x2ab905(true, "Ad was viewed and closed.");
+							if (window.dataLayer) {
+							window.dataLayer.push({
+								'event': "doodoo_sdk_interstitial",
+								'action': "viewed"
+							});
+							}
+						},
+						'error': function (_0x36a081) {
+							_0x20fa1e.adSdk.is_loading = false;
+							_0x2225b9.MY_CONSOLE_LOG("AD_ERROR", _0x36a081);
+							_0x2ab905(false, _0x36a081);
+							if (window.dataLayer) {
+							setTimeout(function () {
+								window.dataLayer.push({
+								'event': 'doodoo_sdk_interstitial',
+								'action': "error",
+								'category': _0x36a081.getMessage && _0x36a081.getMessage() || "unknown error"
+								});
+							});
+							}
+						}
+						});
+					}
+					} else {
+					_0x141532("doodoo ads not ready");
+					_0x2ab905(false, "doodoo ads not ready");
+					}
+				}
+				var _0x2a161f;
+				var _0x53890c = this && this.__spreadArray || function (_0x5a87b4, _0x343769, _0x58b794) {
+					if (_0x58b794 || 0x2 === arguments.length) {
+					var _0x2e9762;
+					var _0x1b62f9 = 0x0;
+					for (var _0x225432 = _0x343769.length; _0x1b62f9 < _0x225432; _0x1b62f9++) {
+						if (!(!_0x2e9762 && _0x1b62f9 in _0x343769)) {
+						(_0x2e9762 = _0x2e9762 || Array.prototype.slice.call(_0x343769, 0x0, _0x1b62f9))[_0x1b62f9] = _0x343769[_0x1b62f9];
+						}
+					}
+					}
+					return _0x5a87b4.concat(_0x2e9762 || Array.prototype.slice.call(_0x343769));
+				};
+				Object.defineProperty(_0x3a4ca8, '__esModule', {
+					'value': true
+				});
+				var _0x20fa1e = _0x35f350(0x396);
+				var _0x2225b9 = _0x35f350(0xc8);
+				var _0x34ec6e = _0x35f350(0x27a);
+				var _0x141532 = window.console.log;
+				0x0;
+				_0x34ec6e.loadEventListener();
+				window.onload = function () {
+					var _0x2955f6;
+					console.log("window load");
+					if (!document.getElementById("gpt-script")) {
+					(_0x2955f6 = document.createElement("script")).type = "text/javascript";
+					_0x2955f6.src = "https://www.googletagservices.com/tag/js/gpt.js";
+					_0x2955f6.async = true;
+					_0x2955f6.id = "gpt-script";
+					document.head.appendChild(_0x2955f6);
+					}
+				};
+				window.onload = function () {
+					var _0xa39203 = {
+					'el': document.querySelector("body"),
+					'client': "doodoo-games-admanager",
+					'is_adsense': false,
+					'is_test': false
+					};
+					_0x2a161f = new _0x20fa1e.adSdk(_0xa39203);
+				};
+				function _0x3642d6() {
+					this.version = "2.1.2";
+					this.commercialBreakInterval = 0x3c;
+					this.lastCommercialBreak = 0x0;
+					window.dataLayer = window.dataLayer || [];
+				}
+				_0x3642d6.prototype.isAdBlocked = function () {
+					return false;
+				};
+				_0x3642d6.prototype.init = function () {
+					var _0x9de836 = this;
+					_0x141532("DooDooGameSdk::init");
+					return new Promise(function (_0x2e76ad, _0x4060bb) {
+					_0x141532('DooDooGameSdk::loading');
+					_0x9de836.customEvent("init");
+					_0x2e76ad(true);
+					});
+				};
+				_0x3642d6.prototype.gameLoadingStart = function () {
+					_0x141532("DooDooGameSdk::gameLoadingStart");
+					this.customEvent("gameLoadingStart");
+				};
+				_0x3642d6.prototype.gameLoadingFinished = function () {
+					_0x141532("DooDooGameSdk::gameLoadingFinished");
+					this.customEvent('gameLoadingFinished');
+				};
+				_0x3642d6.prototype.gameplayStart = function () {
+					_0x141532("DooDooGameSdk::gameplayStart");
+					this.customEvent("gameplayStart");
+				};
+				_0x3642d6.prototype.gameplayStop = function () {
+					_0x141532("DooDooGameSdk::gameplayStop");
+					this.customEvent("gameplayStop");
+				};
+				_0x3642d6.prototype.setDebug = function (_0x1ee79f) {
+					_0x3642d6.isDebug = _0x1ee79f;
+				};
+				_0x3642d6.prototype.getURLParam = function (_0x18e00e) {
+					return '';
+				};
+				_0x3642d6.prototype.commercialBreak = function () {
+					var _0x139348 = this;
+					var _0x3ac284 = [];
+					for (var _0x3bb9e1 = 0x0; _0x3bb9e1 < arguments.length; _0x3bb9e1++) {
+					_0x3ac284[_0x3bb9e1] = arguments[_0x3bb9e1];
+					}
+					_0x141532.apply(undefined, _0x53890c(["DooDooGameSdk::commercialBreak"], _0x3ac284, false));
+					return new Promise(function (_0x3537f8, _0x1d7f8f) {
+					var _0x2f09d = Math.round(Date.now() / 0x3e8);
+					if (_0x139348.lastCommercialBreak + _0x139348.commercialBreakInterval > _0x2f09d) {
+						_0x141532("DooDooGameSdk::skip showing ads");
+						_0x139348.customEvent("commercialBreak", "skipped");
+						_0x3537f8(true);
+					} else {
+						_0x139348.lastCommercialBreak = _0x2f09d;
+						_0x141532("DooDooGameSdk::try to show ads");
+						_0x33d416(function (_0x35c328, _0x204799) {
+						_0x141532("commercialBreak result", _0x35c328, _0x204799);
+						if (_0x35c328) {
+							_0x139348.customEvent("commercialBreak", 'success');
+							_0x3537f8(true);
+						} else {
+							_0x139348.customEvent('commercialBreak', "failed");
+							if (Date.now() % 0xa <= 0x1) {
+							0x0;
+							_0x34ec6e.makeShareEvent(_0x3537f8);
+							} else {
+							_0x3537f8(false);
+							}
+						}
+						});
+					}
+					});
+				};
+				_0x3642d6.prototype.rewardedBreak = function () {
+					var _0x1b8f00 = this;
+					var _0x5205e2 = [];
+					for (var _0xecbc57 = 0x0; _0xecbc57 < arguments.length; _0xecbc57++) {
+					_0x5205e2[_0xecbc57] = arguments[_0xecbc57];
+					}
+					_0x141532.apply(undefined, _0x53890c(["DooDooGameSdk::rewardedBreak"], _0x5205e2, false));
+					return new Promise(function (_0x27c68f, _0x5681b9) {
+					var _0x667124 = Math.round(Date.now() / 0x3e8);
+					_0x1b8f00.lastCommercialBreak = _0x667124;
+					_0x141532("DooDooGameSdk::try to show reword ads");
+					_0x273ba2(function (_0x574284, _0x104568) {
+						_0x141532("rewardedBreak result", _0x574284, _0x104568);
+						if (_0x574284) {
+						_0x1b8f00.customEvent("rewardedBreak", "success");
+						_0x27c68f(_0x574284);
+						} else {
+						_0x1b8f00.customEvent("rewardedBreak", 'failed');
+						0x0;
+						_0x34ec6e.makeShareEvent(_0x27c68f);
+						}
+					});
+					});
+				};
+				_0x3642d6.prototype.happyTime = function (_0x430097) {
+					_0x141532("DooDooGameSdk::happyTime", _0x430097);
+					this.customEvent("gameplayStop");
+				};
+				_0x3642d6.prototype.displayAd = function (_0x2d51d5, _0x5176d0) {
+					_0x141532("DooDooGameSdk::displayAd", _0x2d51d5, _0x5176d0);
+					this.customEvent('displayAd');
+					this.commercialBreak();
+				};
+				_0x3642d6.prototype.destroyAd = function (_0x9e872d) {
+					_0x141532('DooDooGameSdk::destroyAd', _0x9e872d);
+					this.customEvent('destroyAd');
+				};
+				_0x3642d6.prototype.gameLoadingProgress = function () {
+					_0x141532("DooDooGameSdk::gameLoadingProgress");
+				};
+				_0x3642d6.prototype.gameInteractive = function () {
+					_0x141532('DooDooGameSdk::gameInteractive');
+					this.customEvent('gameInteractive');
+				};
+				_0x3642d6.prototype.customEvent = function (_0x50b5c0, _0xde57b7) {
+					if (undefined === _0xde57b7) {
+					_0xde57b7 = '';
+					}
+					var _0x3bbf42 = [];
+					for (var _0x5c9739 = 0x2; _0x5c9739 < arguments.length; _0x5c9739++) {
+					_0x3bbf42[_0x5c9739 - 0x2] = arguments[_0x5c9739];
+					}
+					_0x141532("DooDooGameSdk::customEvent [" + _0x50b5c0 + "] [" + _0xde57b7 + "] [" + _0x3bbf42 + ']');
+					if (window.dataLayer) {
+					window.dataLayer.push({
+						'event': "DOODOO_SDK",
+						'action': _0x50b5c0,
+						'category': _0xde57b7
+					});
+					}
+					var _0x2303b2 = _0x50b5c0;
+					if (_0xde57b7) {
+					_0x2303b2 += '_' + _0xde57b7;
+					}
+					setTimeout(function () {
+					var _0x32e33e;
+					var _0x5df815;
+					try {
+						var _0x3f8cff = JSON.stringify({
+						'game_id': new URLSearchParams(window.location.search).get('gid') || (null == (_0x32e33e = null === window || undefined === window ? undefined : window.location) ? undefined : _0x32e33e.pathname) || '',
+						'event_name': _0x2303b2,
+						'page_url': (null == (_0x5df815 = null === window || undefined === window ? undefined : window.location) ? undefined : _0x5df815.href) || '',
+						'custom_data': {
+							'sessionId': '',
+							'distance': 0x0,
+							'_fbp': '',
+							'_fbc': ''
+						}
+						});
+						window.fetch("https://service.pokigame.io/sdk/v1/track", {
+						'method': 'POST',
+						'mode': "cors",
+						'cache': "no-cache",
+						'credentials': "same-origin",
+						'headers': {
+							'Content-Type': 'application/json',
+							'uid': ''
+						},
+						'referrerPolicy': "no-referrer",
+						'body': _0x3f8cff
+						})['catch'](function (_0x290519) {
+						_0x141532("track game error", _0x290519);
+						window.dataLayer.push({
+							'event': 'DOODOO_SDK',
+							'action': 'trackGameError'
+						});
+						});
+					} catch (_0x135ed9) {
+						_0x141532("track game error", _0x135ed9);
+						window.dataLayer.push({
+						'event': "DOODOO_SDK",
+						'action': "trackGameError"
+						});
+					}
+					}, 0x64);
+				};
+				_0x3642d6.adBlockerOn = false;
+				_0x3642d6.isDebug = false;
+				_0x3642d6._skipVideo = false;
+				var _0x3d1327 = new _0x3642d6();
+				function _0x27804d() {}
+				window.PokiSDK = _0x3d1327;
+				_0x27804d.prototype.showAd = function (_0x1f0a7e, _0x43f53d) {
+					_0x3d1327.customEvent(_0x43f53d.name, "gamebridge_showAd_" + _0x1f0a7e);
+					_0x43f53d.beforeAd();
+					_0x3d1327.commercialBreak().then(function () {
+					_0x43f53d.adBreakDone();
+					})['catch'](function (_0x244818) {
+					_0x3d1327.customEvent(_0x43f53d.name, 'gamebridge_showAd_failed', {
+						'error': _0x244818
+					});
+					_0x43f53d.adBreakDone();
+					});
+				};
+				_0x27804d.prototype.showReward = function (_0x3c5a54, _0x327644, _0x39f6cd) {
+					_0x3d1327.rewardedBreak().then(function () {
+					_0x3c5a54();
+					_0x39f6cd({
+						'breakStatus': "viewed"
+					});
+					})["catch"](function (_0x479329) {
+					_0x327644();
+					_0x39f6cd({
+						'breakStatus': "notReady"
+					});
+					});
+				};
+				window.gamebridge = new _0x27804d();
+				window.gameapi = {
+					'INTERSTITIAL_AD_SHOW_TIME': 1.5,
+					'REWARD_AD_SHOW_TIME': 0x6,
+					'hasWatched': false,
+					'hhei': 0x34c,
+					'rwwid': 0x186,
+					'log': function () {
+					var _0x1f80e9 = [];
+					for (var _0x37c5a6 = 0x0; _0x37c5a6 < arguments.length; _0x37c5a6++) {
+						_0x1f80e9[_0x37c5a6] = arguments[_0x37c5a6];
+					}
+					console.log.apply(console, _0x53890c(["gameapi"], _0x1f80e9, false));
+					},
+					'playInterstitial': function () {
+					_0x3d1327.customEvent("gameapi_playInterstitial");
+					_0x3d1327.commercialBreak();
+					},
+					'playReward': function (_0x2142d3) {
+					_0x3d1327.customEvent("gameapi_playReward");
+					_0x3d1327.rewardedBreak().then(function (_0x1f42df) {
+						_0x2142d3(_0x1f42df, '');
+					});
+					}
+				};
+				window.adToast = function () {
+					var _0x3f0760 = [];
+					for (var _0x40dd16 = 0x0; _0x40dd16 < arguments.length; _0x40dd16++) {
+					_0x3f0760[_0x40dd16] = arguments[_0x40dd16];
+					}
+					console.log.apply(console, _0x53890c(["[adToast]"], _0x3f0760, false));
+				};
+				},
+				0x27a: (_0x4b95f2, _0x4f01d7, _0x4e762b) => {
+				Object.defineProperty(_0x4f01d7, '__esModule', {
+					'value': true
+				});
+				_0x4f01d7.loadEventListener = _0x4f01d7.makeShareEvent = undefined;
+				var _0x8b0010;
+				var _0x48dc93 = _0x4e762b(0xc8);
+				var _0x358fc2 = ["http://127.0.0.1:3000", "https://doodoo-love.jojoywebtest.top", 'https://doodoo.love'];
+				var _0x24e57c = function () {
+					0x0;
+					_0x48dc93.MY_CONSOLE_LOG("[DOODOO] share success");
+				};
+				var _0xefd92 = function () {
+					0x0;
+					_0x48dc93.MY_CONSOLE_LOG("[DOODOO] share failed");
+				};
+				var _0x3a1231 = function () {
+					0x0;
+					_0x48dc93.MY_CONSOLE_LOG("[DOODOO] share is supported");
+					clearTimeout(_0x8b0010);
+				};
+				var _0x18928f = function () {
+					var _0x5937cf;
+					0x0;
+					_0x48dc93.MY_CONSOLE_LOG("[DOODOO] start share");
+					_0x8b0010 = setTimeout(function () {
+					0x0;
+					_0x48dc93.MY_CONSOLE_LOG("[DOODOO] share not supported");
+					_0xefd92();
+					}, 0x1f4);
+					_0x5937cf = {
+					'type': "share-info",
+					'value': 'request'
+					};
+					_0x358fc2.forEach(function (_0x324b7b) {
+					return window.parent.postMessage(_0x5937cf, _0x324b7b);
+					});
+				};
+				_0x4f01d7.loadEventListener = function () {
+					0x0;
+					_0x48dc93.MY_CONSOLE_LOG("loadEventListener");
+					window.addEventListener("message", function (_0x17c9c4) {
+					var _0x268121;
+					if (-0x1 !== _0x358fc2.findIndex(function (_0xd0ed2e) {
+						return _0xd0ed2e === _0x17c9c4.origin;
+					}) && "share-callback" === (null == (_0x268121 = _0x17c9c4.data) ? undefined : _0x268121.type)) {
+						0x0;
+						_0x48dc93.MY_CONSOLE_LOG("receive message", _0x268121);
+						if ("show" === (null == _0x268121 ? undefined : _0x268121.value)) {
+						_0x3a1231();
+						} else if ('close' === (null == _0x268121 ? undefined : _0x268121.value)) {
+						_0xefd92();
+						} else if (-0x1 !== ["facebook", "twitter", "pinterest", 'whatsapp', "telegram", 'success', "copy"].findIndex(function (_0x200d1c) {
+						return _0x200d1c === ((null == _0x268121 ? undefined : _0x268121.value) || '');
+						})) {
+						setTimeout(_0x24e57c, 0x7d0);
+						}
+					}
+					});
+				};
+				_0x4f01d7.makeShareEvent = function (_0x9cbe77) {
+					_0xefd92 = function () {
+					0x0;
+					_0x48dc93.MY_CONSOLE_LOG("failed to share");
+					_0x9cbe77(false);
+					};
+					_0x24e57c = function () {
+					0x0;
+					_0x48dc93.MY_CONSOLE_LOG("success to share");
+					_0x9cbe77(true);
+					};
+					_0x18928f();
+					setTimeout(function () {
+					return _0x9cbe77(false);
+					}, 0x2710);
+				};
+				}
+			};
+			var _0x3875a4 = {};
+			function _0x526cf1(_0x338fda) {
+				var _0x23c56b = _0x3875a4[_0x338fda];
+				if (!(undefined !== _0x23c56b)) {
+				_0x23c56b = _0x3875a4[_0x338fda] = {
+					'exports': {}
+				};
+				_0x21c733[_0x338fda].call(_0x23c56b.exports, _0x23c56b, _0x23c56b.exports, _0x526cf1);
+				}
+				return _0x23c56b.exports;
+			}
+			_0x526cf1.d = (_0x528fc3, _0x39b6d5) => {
+				for (var _0x1a2654 in _0x39b6d5) if (_0x526cf1.o(_0x39b6d5, _0x1a2654) && !_0x526cf1.o(_0x528fc3, _0x1a2654)) {
+				Object.defineProperty(_0x528fc3, _0x1a2654, {
+					'enumerable': true,
+					'get': _0x39b6d5[_0x1a2654]
+				});
+				}
+			};
+			_0x526cf1.o = (_0x536991, _0x11c79d) => Object.prototype.hasOwnProperty.call(_0x536991, _0x11c79d);
+			_0x526cf1.r = _0x59fb78 => {
+				if ('undefined' != typeof Symbol && Symbol.toStringTag) {
+				Object.defineProperty(_0x59fb78, Symbol.toStringTag, {
+					'value': "Module"
+				});
+				}
+				Object.defineProperty(_0x59fb78, "__esModule", {
+				'value': true
+				});
+			};
+			_0x526cf1(0x25f);
+		})();
+		</script>
+
+	</head>
+
+	<body>
+
+	<!-- TODO debugcode, move me to provider -->
+	<div id="debug" style="position:absolute; color:red; left:40px; z-index: 9999999"></div>
+
+    <script>
+			window.__antialias = false
+    </script>
+
+		<script>
+		var version = "1.2.4"
+
+		var gaPath = '/golddigger/' + version + '/';
+
+		var initTime = 1*new Date();
+
+			window.vpath = "v/external";
+
+			window.spath = "v/external/external.js";
+
+			window.extsize = 1811152;
+
+		//In seperate code block to load first & not trigger when JS is disabled
+		var preloader = document.createElement('preloader');document.body.appendChild(preloader);
+
+		</script>
+		<script>
+			//ie9 polyfill
+			if(!(window.console && console.log)) {
+				var fn = function(){};
+				console={log:fn,debug:fn,info:fn,warn:fn,error:fn};
+			}
+			Host = {
+    			Localize:{
+
+        		languages:
+    				[]
+
+    			},dataUrlsSupported:(function(){
+					var c = document.createElement("canvas");
+					return c.toDataURL&&(c.toDataURL("image/png").indexOf("data:image/png") == 0);
+				})()
+			};
+
+			(function(scope){
+				(function(w,d,a,m){var g='GameAnalytics';w[g]=w[g]||function(){(w[g].q=w[g].q||[]).push(arguments)}})(window,document);
+
+				var relasedCanvasElements = []
+				var completed = 0;
+				var preview = 0;
+				var facebookAPIInited = false;
+				var gameIsLoaded = false;
+
+				scope._jsonData={};
+				;
+scope._jsonData['ab_tests'] = {"ab_ftue":{"cohorts":["disabled","enabled"]},"ab_blastpreview":{"cohorts":["disabled","enabled"]}};
+scope._jsonData['track-ga'] = {"gaIds":{"all":"UA-54081731-1"},"state":"{appId=app_id,appName=app_name,appVersion=app_version,metric1=play_session_count,dimension2=cohort,dimension4=play_session_id,dimension3=device_id,metric2=days_elapsed,metric3=days_played,dimension5=channel,dimension6=entry_point,dimension7=utm_string,dimension8=screen,dimension9=facebook_context,metric4=currency_amount,metric5=missions_completed,metric6=progression,metric7=games_played}","events":{"default":"name,,value,_params","options_change":"name,option_name:option_value","game_end":"name,level_id,game_duration","game_play_start,game_continue_used":"name,level_id","keepalive,new_user,mission_success":"name","coin_spent,tutorial_step_completed,session_start":"name,,value","game_loaded":"name,,loading_time","social_engage,engage":"'engage',engage_id:button_placement,1","play_with_friend":"name,,1","share,invite":"name,button_placement,1","cross_promotion_show":"name,button_placement,1","cross_promotion_click,cross_promotion_success,cross_promotion_failure":"name,target_game,1","ad_mandatory_request":"name,,value,{_merge=_params,dimension13=provider}","ad_mandatory_response":"name,ad_response,value,{_merge=_params,dimension13=provider}","ad_mandatory_show":"name,,value,{_merge=_params,dimension13=provider}","ad_mandatory_finish":"name,ad_result,value,{_merge=_params,dimension13=provider}","ad_mandatory_blocked":"name,,value,{_merge=_params,dimension13=provider}","ad_mandatory_pass":"name,,value,{_merge=_params,dimension13=provider}","ad_mandatory_throttled":"name,throttle_type,value,{_merge=_params,dimension13=provider}","ad_rewarded_request":"name,,value,{_merge=_params,dimension13=provider}","ad_rewarded_response":"name,ad_response,value,{_merge=_params,dimension13=provider}","ad_rewarded_show":"name,,value,{_merge=_params,dimension13=provider}","ad_rewarded_finish":"name,ad_result,value,{_merge=_params,dimension13=provider}","ad_rewarded_blocked":"name,,value,{_merge=_params,dimension13=provider}","ad_rewarded_pass":"name,,value,{_merge=_params,dimension13=provider}","ad_rewarded_throttled":"name,throttle_type,value,{_merge=_params,dimension13=provider}","chatbot_noshow,chatbot_show,chatbot_success,chatbot_issubscribed,chatbot_useraborted":"name,,","chatbot_error":"name,reason,"}};
+scope._jsonData['track-gma'] = {"url":"utils/gameanalytics310.js","currencies":"coin","itemtypes":"unknown","channelMapping":{"web_edge,web_firefox,web_opera,web_safari,web_chrome,":"web","web_safari_ios,web_chrome_ios":"web_ios","vkru,okru,twitch,hago":"other"},"customDimensions01":"web,web_ios,web_samsung,web_samsung_m4s,web_silk,chromeos,android,ios,rcs,samsung,facebook_instant,facebook_canvasweb,facebook_canvas,bixby,imessage,spil,kongregate,kik,twitter,other","events":{"new_user":"'addDesignEvent',name","game_loaded":"'addProgressionEvent','Complete',name,,,loading_time","keepalive":"'addDesignEvent',name","game_play_start":"'addProgressionEvent','Start',level_id","game_continue_used":"'addProgressionEvent','Start',level_id","game_end":"'addProgressionEvent','Complete',level_id,,,value","game_end-lose":"'addProgressionEvent','Fail',level_id,,,value","mission_success":"'addDesignEvent',name","ad_rewarded_request":"'addDesignEvent',name:screen","ad_rewarded_response":"'addDesignEvent',name:screen:ad_response","ad_rewarded_show":"'addDesignEvent',name:screen","ad_rewarded_finish":"'addDesignEvent',name:screen:ad_result,value","ad_mandatory_request":"'addDesignEvent',name:screen","ad_mandatory_response":"'addDesignEvent',name:screen:ad_response","ad_mandatory_show":"'addDesignEvent',name:screen","ad_mandatory_finish":"'addDesignEvent',name:screen:ad_result,value","coin_spent":"'addResourceEvent','Sink','coin',value,'unknown','consumed'","play_with_friend":"'addDesignEvent',name:screen,1","share,invite":"'addDesignEvent',name:button_placement,1","crosspromotion":"'addDesignEvent',name:screen","cross_promotion_show":"'addDesignEvent',name:button_placement,1","cross_promotion_success":"'addDesignEvent',name:target_game,1","engage":"'addDesignEvent',name:engage_id","iap_interaction":"'addDesignEvent',name:iap_id,value","iap_completed":"'addDesignEvent',name:iap_id,value","iap_failed":"'addDesignEvent',name:iap_id,value","tutorial_step_completed":"'addDesignEvent',name:value","options_change":"'addDesignEvent',option_name:option_value","social_engage":"'addDesignEvent','engage':engage_id:button_placement,1"}};
+
+				scope.getNewCanvasObject = function(){
+					var cachedElement = relasedCanvasElements.pop();
+					if(cachedElement) return cachedElement;
+					return document.createElement('canvas')
+				}
+				scope.releaseCanvas = function(canvas){
+					canvas.getContext('2d').setTransform(1, 0, 0, 1, 0, 0);
+					canvas.width = canvas.height = 1
+					relasedCanvasElements.push(canvas)
+				}
+
+				var isFBInstant = !!window.FBInstant;
+
+				if(isFBInstant){
+					gaPath += 'app/facebook_instant/';
+
+					FBInstant.logEvent&&FBInstant.logEvent(
+						"NLPPreloadStart"
+					)
+				}
+
+				var isTwitch = !!window.Twitch;
+
+				if(isTwitch){
+					gaPath += 'app/twitch/';
+				}
+
+				var loadQueue = [];
+				var loadQueueTimer = null;
+				function triggerQueue() {
+					var t = new Date().getTime();
+					while(loadQueue.length && (new Date().getTime() - t < 10)) {
+						loadQueue.shift()();
+					}
+					if(loadQueue.length) {
+						popQueue();
+					}
+				}
+				function popQueue() {
+					clearTimeout(loadQueueTimer);
+					if(loadQueueTimer === null) triggerQueue();
+					loadQueueTimer = setTimeout(function() {
+						triggerQueue();
+					}, 1);
+				}
+
+				function buildCharIndex(chars) {
+					var index = {};
+					for(var i = 0; i < chars.length; i++) index[chars[i]] = i;
+					return index;
+				}
+
+				var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/!#$&*-,.:;@()<=>?[]^`{|}";
+				var charIndex = buildCharIndex(chars);
+				var intChars = "()<=>?[]^`{|}";
+				var intCharIndex = buildCharIndex(intChars);
+
+				scope.getJSGImageWrapper = function getJSGImageWrapper(path, actions, cords, drawCallback) {
+
+					function getCord() {
+						var first = cords[cordOffset++];
+						var res, intChar;
+						switch(first) {
+							case '_': res = 0; break;
+							case '~': res = 1; break;
+							case '%': res = 149932; break;
+							case '\'': res = -149932; break;
+							case '@':
+								res = 
+									  charIndex[cords[cordOffset++]]
+									+ charIndex[cords[cordOffset++]] * 74
+									+ charIndex[cords[cordOffset++]] * 5476 // (74 * 74)
+									+ charIndex[cords[cordOffset++]] * 405224; // (74 * 74 * 74)
+								res = (res / 100) - 149932;
+								break;
+							default:
+								intChar = intCharIndex[first];
+								if(intChar !== undefined) {
+									res = intChar * 88 + charIndex[cords[cordOffset++]];
+								} else {
+									res =
+										  charIndex[first]
+										+ charIndex[cords[cordOffset++]] * 74
+										+ charIndex[cords[cordOffset++]] * 5476; // (74 * 74)
+									res = (res / 100) - 2026;
+								}
+						}
+						return res;
+					}
+					function getColor() {
+						return getCord()
+							? 'rgb(' + getCord() + ',' + getCord() + ',' + getCord() + ')'
+							: 'rgba(' + getCord() + ',' + getCord() + ',' + getCord() + ',' + getCord() + ')';
+					}
+					function toCanvas(canvas, scale) {
+						canvas.width = Math.ceil(assetWidth * scale);
+						canvas.height = Math.ceil(assetHeight * scale);
+						var ctx = canvas.getContext('2d');
+						ctx.scale(scale, scale);
+						var canvasStack = [canvas];
+						var fillObject;
+						try {
+							for(var a = 0; a < actions.length; a++) {
+								switch(actions[a]) {
+									case '4': 
+										var newCanvas = getNewCanvasObject();
+										newCanvas.width = getCord();
+										newCanvas.height = getCord();
+										ctx = newCanvas.getContext('2d');
+										canvasStack.push(newCanvas);
+										break;
+									case 'b':
+										var pattern = ctx.createPattern(ctx.canvas, 'no-repeat');
+										var removed = canvasStack.pop();
+										releaseCanvas(removed);
+										ctx = canvasStack[canvasStack.length - 1].getContext('2d');
+										ctx.fillStyle = pattern;
+										break;
+									case 't': fillObject = ctx.createLinearGradient(getCord(), getCord(), getCord(), getCord()); break;
+									case 'D': fillObject = ctx.createRadialGradient(getCord(), getCord(), getCord(), getCord(), getCord(), getCord()); break;
+									case '8': fillObject.addColorStop(getCord(), getColor()); break;
+									case 'F': ctx.fillStyle = fillObject; break;
+									case 'f': ctx.save(); break;
+									case '/': ctx.bezierCurveTo(getCord(), getCord(), getCord(), getCord(), getCord(), getCord()); break;
+									case 'p': ctx.strokeStyle = getColor(); break;
+									case 'w': ctx.lineCap = 'butt'; break;
+									case 'y': ctx.lineJoin = 'miter'; break;
+									case '9': ctx.miterLimit = getCord(); break;
+									case '6': ctx.fillStyle = getColor(); break;
+									case 'n': ctx.beginPath(); break;
+									case 'q': ctx.closePath(); break;
+									case 'o': ctx.fill(); break;
+									case 'P': ctx.stroke(); break;
+									case 'r': ctx.restore(); break;
+									case '2': ctx.arc(getCord(), getCord(), getCord(), getCord(), getCord(), getCord() === 1); break;
+									case 'm': ctx.moveTo(getCord(),getCord()); break;
+									case 'l': ctx.lineTo(getCord(),getCord()); break;
+									case '5': ctx.quadraticCurveTo(getCord(), getCord(), getCord(), getCord()); break;
+									case 'C': ctx.clip(); break;
+									case 'E': ctx.lineWidth = getCord(); break;
+									case 'A': ctx.transform(getCord(), getCord(), getCord(), getCord(), getCord(), getCord()); break;
+									case 'u': ctx.translate(getCord(), getCord()); break;
+									case 'V': ctx.scale(getCord(), getCord()); break;
+									case '0': ctx.rotate(getCord()); break;
+									case 'K': ctx.globalAlpha = getCord(); break;
+									case 'G': ctx.strokeStyle = fillObject; break;
+									default: console.error('unhandled', actions[a]);
+								}
+							}
+						} catch(err) {
+							window.onerror && window.onerror('Draw failure in > ' + path + ' ' + err.message, err.sourceURL, err.line);
+						}
+						// Reset JSG drawing
+						cordOffset = 0;
+						getCord();
+						getCord();
+						return canvas;
+					}
+
+					function handleDraw(config) {
+						config = config || {};
+						var scale = config.scale || 1;
+						var forceCanvas = config.forceCanvas || false;
+						//var instantDraw = config.instantDraw || false; // Check if we need this
+						var jsgImage;
+						function handleCallback() {
+							jsgImage.onload = null;
+							jsgImage.onerror = null;
+							drawCallback && drawCallback()
+							drawCallback = null;
+						}
+						function loadNext() {
+							var jsgCanvas = toCanvas(getNewCanvasObject(), scale);
+							if(typeof drawCallback === 'function') {
+								jsgImage.onload = handleCallback;
+								jsgImage.onerror = handleCallback;
+							}
+							jsgImage.src = jsgCanvas.toDataURL(); // TODO: Investigate performance impact here
+							releaseCanvas(jsgCanvas);
+						}
+						if(Host.dataUrlsSupported && !forceCanvas) {
+							jsgImage = new Image();
+							loadNext();
+							return jsgImage;
+						} else {
+							var jsgCanvas = toCanvas(getNewCanvasObject(), scale);
+							jsgCanvas.isCanvas = true;
+							drawCallback && drawCallback()
+							drawCallback = null
+							return jsgCanvas;
+						}
+					}
+
+					var cordOffset = 0;
+					var assetWidth = getCord();
+					var assetHeight = getCord();
+					var jsgWrapper = {
+						isJSG: true,
+						path: path,
+						width: assetWidth,
+						height: assetHeight,
+						actions: actions,
+						cords: cords,
+						draw: handleDraw
+					};
+
+					return jsgWrapper;
+				};
+
+				var canvas, loadbar, progressbar, logoOptions = {forceCanvas: true};
+				if(!isFBInstant) {
+					canvas = getJSGImageWrapper('logo','6nmllmllo6nmllmllo6nmllllllmlllmlllmllllo6nmllmlllmllo6nmllmlllmlllmllllo6nmlllmlllmllllmllllo6nmlllmlllo6nmlllllllllllllmlllllll//lllllml//lllmllllllllllmlllllll//lllllml//lllm////m////lm////lll//llllm/////llo6nmlllmllmlllmllllo6nmllo6nmlllo6KnmllmllllllllmlllllllloK','Iq7|s~<+(2)N>4>o=K?j>m?r{[<=}b>G}^<W~</(3(`=M?i=E]U>m?q):)]=;=O)#<(~<h<g<n|U(]>4>n>{>P?9=w[D=W`N(0|H_(T>(_==(.=})t?}?9=w>{>P=;=O>Y).:G7>K,D6?7`-[9`i[H{,[H~)y)y)y|U(]k*5)F}^<W(X=[(>)0):)](.=},D6?7|,[@`-[+~_)1<h{W=J}^<W|U(]<I?k)x?E)t?}=E]U[D=W?9=w>Y).?d<n`i[H]r>;]V>}`H]W`-[+~)u)!)!>4>n|U(]{W=J>m?q=E]U(.[3(T>()t?}Ov6<(Iq7<^:G7>K{,[H||>}]$>6`|?<{,[H`i[H]r>;~)J)})7):)])x?E)t?}(.=}>^>Q=y=L=;=O>{>P~(K)z<c)`|s<h|H<h{W=P{W=i{E=i`+<h`+<h^;=h^;=,^k=,^Z)]^Z)/^s)/|s>Y|s>9|H>9{a>|{a?*|s[V|s[h|V?5{SY8uqK1DTvMs0[i`YDTvMNz6!u^Z?B^Z>V^Z>D^r>D|r>Y|s>Y|s>9^:?F^:?0^:yLuSiz?+`YyLu`3;+t`*?G`*>9`*>9^:>9^:^M|s^h|d`m^Z`L^Z^5^3]{{&]Y^3[,^Z[p^Z]u|d]&|s{C|s{n|H{n{a{!{a|u|s|}|s}L|V|i{SSE4qK18k4Ms0}M`Y8k4MNzqI4^Z{&^Z{A^Z`-^r`-|r{C|s{C|s{n^:{.^:QQ3,LzOd3+hz|n`YOd34h0kG3iz0{.`*{m`*{n^:{n^:}P^f}PYEyGq448x}u]|cy548x6y5QBy}<^f6y5s2ycy50:y}u^+Gq4+:y}Pg0y}P^f}.^foq5O;xam5Y*x}u^E}ZY*xIx4E;x}V^f}Vu4y*24K#y}u^4}*U#yyq5q5y}.^f}.^f}g^Oe.4+Hy0E5gHy}x^OOa5gHyMd54Ly}9^WMd5Aeyia52iy}0^juS5qlyIU5Eny}3^m}+^u}3^u}x^nmK5EnyWJ5gly}t^jJF5kkyFB5aky}m^j}m^v}g^v}g^O}g^O}m^eAC5sdysG5sdy}u^evS5sdycU5wcy}2^XcU5:RyqT5aQy}1^UYQ5sOyuN5iOy}v^T2G5iOyHD5sOy}m^T}m^e}m^e~)C)R)O=E]U?F[g{W=J>m?q=M?i<I?k=E]U>Y).<r)+):)]=;=O||>}Ov6<(Gn6)+O.5(.}^<W~_)u)>[q?o`H]W]V>}~_<E<q|B]e`H]W`-[+|,[@~_(x(*mAl}^<W|U=N{[<=]r>;]V>}[q?o[]?*]x?h^E?R^@?X]$>7]r>;?{=P?x=h?x=h>?>K>{>P?9=w?9=w[E=W?{=P~').draw(logoOptions);
+					loadbar = document.createElement('loadbar');
+					progressbar = document.createElement('div');
+					preloader.appendChild(loadbar);
+					loadbar.appendChild(progressbar);
+					preloader.appendChild(canvas);
+				}
+
+				var ow = 0
+				var oh = 0
+				function handleResize(){
+					if(!isFBInstant){
+						var w = document.documentElement.clientWidth;
+						var h = Math.min(window.innerHeight,document.documentElement.clientHeight);
+						if(ow!=w||oh!=h){
+							ow = w;oh = h;
+							var s = Math.min(w,h)*.8>>0
+							var nh = s*0.8187702265>>0
+							var t = ((h-nh*1.15)/2>>0)
+
+							loadbar.style.width = canvas.style.width = s+"px"
+							canvas.style.height = nh +"px"
+							loadbar.style.left = canvas.style.left = ((w-s)/2>>0)+"px"
+							canvas.style.top = t+"px"
+							loadbar.style.height = Math.max(Math.min((s/40>>0),10),4) + "px"
+							loadbar.style.top = (t + nh*1.05)+"px"
+						}
+					}
+				}
+				handleResize()
+
+				scope.htmlprogress = function(total, left){
+					completed = Math.max((left / total), completed)
+				}
+
+				var timer = setInterval(function(){
+					if(completed < .5){
+						completed += (.5-completed)/100
+					}
+					preview += (completed-preview)/10
+
+					if(isFBInstant && facebookAPIInited){
+						FBInstant.setLoadingProgress(preview*100>>0)
+					} else {						
+						progressbar&&(progressbar.style.width = (preview*100>>0) + "%")
+					}
+					handleResize();
+				},50)
+
+				setTimeout(function(){
+					loadbar&&(loadbar.style.display = "block")
+				},500)
+
+				function handleFacebookLoaded() {
+					if(isFBInstant && facebookAPIInited && gameIsLoaded) {
+						FBInstant.logEvent('NLPhandleFacebookLoaded');
+						FBInstant.setLoadingProgress(100);
+						function handleSuccess() {
+							FBInstant.logEvent&&FBInstant.logEvent('NLPstartGameAsync');
+							var locale = false;
+
+							// If it's one of the supported languages then load it
+							if(locale && locale != 'en-US' && Host.Localize.languages.indexOf(locale) > -1) {
+								Host.Localize.Load(locale, function(language, success) {
+									console.log('Localization loaded: ', language, success);
+									Host.emit('FBInstantPreloadComplete');
+								});
+							} else {
+								// Do english
+								Host.emit('FBInstantPreloadComplete');
+							}
+						}
+						function handleError(err) {
+							//<debug>
+							console.error('Instant Error:', err);
+							//</debug>
+							window.onerror && window.onerror('handleFacebookLoaded > startGameAsync (' + FBInstant.getSDKVersion() + ') > ' + (err.message || err.toString()), err);
+							FBInstant.logEvent('startGameAsyncError', 1, err);
+							Host.emit('FBInstantPreloadComplete');
+						}
+
+						FBInstant.startGameAsync()
+							.then(handleSuccess)
+							.catch(handleError);
+					}
+				}
+
+				scope.htmlclean = function() {
+					if(isFBInstant) {
+						FBInstant.logEvent('NLPhtmlclean');
+					}
+					gameIsLoaded = true;
+
+					// Stop the progress bar timer
+					clearInterval(timer)
+
+					// Remove the preloader
+					if(preloader){
+						preloader.parentNode&&preloader.parentNode.removeChild(preloader)
+					}
+
+					// Dealloc the canvas
+					if(canvas){
+						canvas.width = canvas.height = 1
+					}
+
+					// Garbage collection
+					loadbar = progressbar = canvas = preloader = null;
+
+					handleFacebookLoaded()
+				}
+
+				// Embed general data - this is used by builder.rb's embed_data_content
+				//   files: Array of filenames
+				//   data : Array of data that mapes to filenames
+				scope.embeddedFiles = {};
+				scope.embedFiles = function(files,data) { 
+					for( var a=0;a<files.length;a++){
+						var d = data[a]
+						scope.embeddedFiles[files[a]] = d;
+					}
+				}
+
+				// Embed image data
+				scope.embeddedAssets = {};
+
+				scope.embedLoad = function(path,file){
+					scope.embeddedAssets[path] = file;
+				}
+
+				scope.loadAssets = function(files, svgCommands, data){
+					for( var a=0;a<files.length;a++){
+						var path = files[a]
+						var svg = svgCommands[a];
+						if(svg){
+							scope.embedLoad(path,[svg,data[a]])
+						}else{
+							scope.embedLoad(path, data[a])
+						}
+					}
+				}
+
+				var req = new XMLHttpRequest();
+				req.addEventListener('load', function(event){
+					var s = document.createElement("script");
+					//s.text rather than innerHTML for ie9
+					s.text = event.target.responseText;
+					document.documentElement.appendChild(s);
+				})
+
+				req.addEventListener("progress", function(event) {
+				    if (event.lengthComputable) {
+				    	htmlprogress(event.total, event.loaded*.7)
+				    } else {
+				    	htmlprogress(scope.extsize||500000, event.loaded)
+				    }
+				}, false);
+
+				if(scope.spath !== undefined){
+					req.open("GET", spath);
+					req.send()
+				}
+
+				if(isFBInstant){
+					FBInstant.logEvent&&FBInstant.logEvent( "FRVRAppVersion", 26, { build: "26", version: version })
+					FBInstant.logEvent&&FBInstant.logEvent(
+						"NLPBeforeinitializeAsync"
+					)
+
+					FBInstant.initializeAsync()
+					.then(function() {
+						FBInstant.logEvent&&FBInstant.logEvent(
+							"NLPInitializeAsync"
+						)
+						facebookAPIInited = true
+						handleFacebookLoaded()
+						gax('set', 'userId', FBInstant.player.getID());
+					})
+					.catch(function(err) {
+						window.onerror && window.onerror('Failure in promise initializeAsync > ' + err.message, err);
+						//We fire this no matter what, we always whant to show the game regardless of the users crashy devices.
+						facebookAPIInited = true
+						handleFacebookLoaded()
+					});
+				}
+
+			})(this)
+		</script>
+
+		<canvas id="gameCanvas"></canvas>
+		<script>
+			var cs = document.getElementById('gameCanvas').style;
+			cs.width = cs.height = "100%"
+		</script>
+
+		<div id="overlay"></div>
+
+		<content itemscope="" itemtype="https://schema.org/VideoGame">
+			<h1 itemprop="name">Gold Digger FRVR</h1>
+			<meta itemprop="url" content="https://golddigger.frvr.com/">
+			<div itemprop="author" itemscope itemtype="http://schema.org/Organization">
+		    <p style="margin-top:0px"><span itemprop="name"><a itemprop="url" href="http://frvr.com/">By FRVR</a></span></p>
+		    </div>
+
+			<metadata>
+				<!--<img itemprop="image" src="" data-original="./v/1576154523809/i/web/icon196x196.png"/>-->
+				<meta itemprop="playMode" content="SinglePlayer">
+    		<p>Genre: <span itemprop="genre"></span></p>
+				<div itemscope itemtype="http://schema.org/AggregateRating" itemprop="aggregateRating">
+					<div>Average Rating: <b itemprop="ratingValue">4.8</b>/<b itemprop="bestRating">5</b></div>
+					<meta itemprop="reviewCount" content="9427">
+				</div>
+				<link itemprop="applicationCategory" content="Game">
+				<link itemprop="applicationSubCategory" content="Board, Puzzle">
+				<span itemprop="offers" itemscope="" itemtype="http://schema.org/Offer">
+					<meta itemprop="price" content="$0">
+					<meta itemprop="priceCurrency" content="USD">
+					<link itemprop="availability" href="http://schema.org/InStock">
+				</span>
+				<meta itemprop="contentRating" content="Everyone">
+				<meta itemprop="playMode" content="SinglePlayer">
+			</metadata>
+
+			<p>Gold Digger FRVR is the best digging game, for both gold rush veterans and mining fans. Take your pickaxe and your helmet and start drilling!</p>
+<p>Let’s dig day and night, let’s find tons of gold and some treasures, let’s put them on the ground and make some money! But aware of the giant rocks, make smart use of your pickaxe and dig wisely, otherwise they will fall on you and you'll lose all the gold! Instead of that, try to connect three or more rocks to blast them and get even more gold!</p>
+<p>Explore every corner of the cave and do not leave a stone unexcavated. Who knows what could you find in the depths of a gold mine? Dig up ancient dinosaurs bones, valuable gold nuggets of even shiny diamonds. No rock can stop you from your mining mission! Be careful of underground explosions and use the checkpoint base to save your progress.</p>
+Start mining and fill your bag with gold and diamonds in the best free digging game ever! Can you become the speleology tycoon?
+			<p><a href=".">Please enable JavaScript to play now!</a></p>
+
+			<h2>More information</h2>
+			<ul>
+				<li><a href="https://frvr.com/">FRVR Website</a></li>
+				<li><a href="https://news.frvr.com">FRVR News</a></li>
+				<li><a href="https:twitter.com/frvrgames">FRVR on Twitter</a></li>
+				<li><a href="https:www.facebook.com/frvrgames">FRVR on Facebook</a></li>
+				<li><a href="https:plus.google.com/+Frvrgames">FRVR on Google+</a></li>
+			</ul>
+			<h2>More great games</h2>
+			<ul>
+
+			</ul>
+			<h2>More platforms</h2>
+			<ul>
+
+			</ul>
+
+			<p><a href="//frvr.com/">Always get the greatest new games on frvr.com</a></p>
+		</content>
+
+		<script>
+
+			function parseStack(err) {
+				var stack = [];
+				var lines = (err && err.stack || '').split('\n'); // split stack trace into lines
+				lines.shift(); // remove first line, the error message
+				for(var i = 0; i < lines.length; i++) {
+					// simplyfy and shorten details
+					stack.push(lines[i]
+						.replace(/^\s*at\s+/g, '')
+						.replace(/(https?:\/\/[^\/]+)?/g, '')
+						.replace(/https?:\/\/[^\/]+/g, '')
+						.replace(/\/?game\/[^\/]+\/[^\/]+/g, '')
+						.replace(/:?<anonymous>:?/g, '')
+						.replace(/^([^ ]+)\s+\(/g, '$1(')
+						.replace(/^([0-9]+:[0-9]+$)/g, '($1)')
+					);
+				}
+				return stack;
+			}
+			function createErrorHandler(errorType) {
+				return function(errorMsg, sourceURL, line, column, err) {
+					if(sourceURL instanceof Error) { // Enable optional parameters
+						err = sourceURL;
+						sourceURL = undefined;
+					}
+					err = err || new Error(errorMsg);
+					var parts = ((err.stack || '').split('\n')[1] || '').split(':');
+					var colFromStack = parts.pop() || undefined;
+					var lineFromStack = parts.pop() || undefined;
+					line = line || err.lineNumber || err.lineno || err.line || lineFromStack || '';
+					column = column || err.columnNumber || err.colno || err.column || colFromStack || '';
+					sourceURL = sourceURL || err.sourceURL || '';
+					errorMsg = errorMsg || err.message || (err.toString && err.toString()) || '';
+					var parsedStack = parseStack(err) || [];
+					var errSrc = sourceURL + ': ' + line + ': ' + column;
+					window.Host && Host.Log && Host.Log(errorType + ' Error: ' + errorMsg + ': ' + errSrc + '\nStack: ' + parsedStack.join('\n'));
+					console.error(errorType + ' Error', errorMsg + ': ' + errSrc, err);
+					errSrc += ': ' + parsedStack.join('|').substr(0, 150);
+					var eventCategory = 'golddigger 1.2.4 26 ' + errorType + ' Error';
+					var errTime = Date.now() - ((window && window.__FRVR && window.__FRVR.startTime) || 0);
+					if(window.gax) {
+						gax('send', 'event', eventCategory, errorMsg, errSrc, errTime);
+						gax('send', 'exception', {exDescription: eventCategory + ': ' + errorMsg + ': ' + errSrc});
+					}
+					if(typeof FBInstant !== 'undefined' && typeof FBInstant.logEvent === 'function') {
+						FBInstant.logEvent('onerror', errTime, {
+							appName: 'golddigger',
+							appVersion: '1.2.4',
+							appBuild: '26',
+							category: eventCategory,
+							message: errorMsg,
+							stack: errSrc
+						});
+					}
+				};
+			}
+			window.onerror = createErrorHandler('JavaScript');
+			var promiseErrorHandler = createErrorHandler('Promise');
+			window.onunhandledrejection = function(rejection) {
+				var err = (rejection && rejection.reason) || {};
+				promiseErrorHandler(undefined, undefined, undefined, undefined, err);
+			};
+
+			window.gaAppInfo = {
+				appId: 'com.frvr.golddigger',
+				appName: 'golddigger',
+				appVersion: '1.2.4',
+			};
+			window.initGoogle = function(){
+				ga('set', window.gaAppInfo);
+				ga('create', 'UA-54081731-1', 'auto', window.gaAppInfo);
+
+				ga('create', 'UA-54081731-48', 'auto', 'game', window.gaAppInfo);
+
+				gax('require', 'displayfeatures');
+				gax('send', 'pageview', gaPath + location.search);
+				// Record native-ish "Promise" support
+				var eventCategory = 'golddigger 1.2.4 26 Promise Support';
+				gax('send', 'event', eventCategory, (typeof Promise === 'function') ? 'supported' : 'unsupported');
+			}
+		</script>
+</html>
